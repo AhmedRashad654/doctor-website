@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  margin: 0;
+  padding: 0;
+}
+.link-active {
+  background-color: white;
+  border-radius: 25px;
+  padding: 5px 25px;
+  color: #0a456f;
+}
+/* react-phone-number */
+.form-control {
+  background-color: transparent !important;
+  height: 52px !important;
+  width: 100% !important;
+}
+
+.flag-dropdown {
+  background-color: transparent !important;
+  color: black !important;
+  border-right: 1px solid white;
+  text-align: left !important;
+  direction: ltr !important;
+}

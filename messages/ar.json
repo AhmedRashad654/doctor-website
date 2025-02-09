@@ -1,0 +1,73 @@
+{
+  "HomePage": {
+    "navbar": {
+      "Register": "انشاء حساب",
+      "Login": "تسجيل الدخول",
+      "Home": "الصفحة الرئيسية",
+      "Appointment": "المواعيد",
+      "Quizzes": "الاختبارات",
+      "Companies": "شركات",
+      "Med Clips": "مقاطع ميد"
+    },
+    "heroSection": {
+      "First": "مرحبا بك في موقعنا",
+      "Second": "صفاء العقل",
+      "Placeholder Search": "بحث عن طبيب..."
+    },
+    "Services": {
+      "Main": "خدمات",
+      "General": "عام",
+      "Dental": "طب الأسنان",
+      "Radiology": "الأشعة",
+      "More": "المزيد"
+    },
+    "BestSpecialist": {
+      "Best Specialist": "افضل التخصصات",
+      "General": "عام",
+      "Dental": "طب الأسنان",
+      "Radiology": "الأشعة",
+      "Pediatrics": "طب الأطفال"
+    },
+    "vedio": {
+      "main": "رؤية المزيد"
+    },
+    "footer": {
+      "About US": "عنا",
+      "Appointment": "المواعيد",
+      "Privacy Policy": "سياسة الخصوصية",
+      "Contact Us": "تواصل معنا",
+      "Companies": "شركات",
+      "Trems & Conditions": "الشروط والاحكام",
+      "Support": "الدعم",
+      "Med Clips": "مقاطع ميد",
+      "Reserved": "© 2025 جميع الحقوق محفوظة"
+    }
+  },
+  "Login": {
+    "header": "تسجيل الدخول",
+    "username": "اسم المستخدم ",
+    "password": "كلمة المرور",
+    "button": "تسجيل",
+    "Loading": "انتظار",
+    "NotAccount": "ليس لديك حساب ؟",
+    "RegisterNow": "انشاء حساب ",
+    "LoginGoogle": "تسجيل باستخدام جوجل"
+  },
+  "Register": {
+    "header": "انشاء حساب",
+    "username": "اسم المستخدم ",
+    "fullName": " الاسم بالكامل ",
+    "password": "كلمة المرور",
+    "confirmPassword": "تاكيد كلمة المرور",
+    "button": "انشاء حساب",
+    "Loading": "انتظار",
+    "HaveAccount": "لديك حساب بالفعل؟",
+    "LoginNow": "تسجيل الدخول"
+  },
+  "verification": {
+    "header": "توثيق",
+    "text": "الكود اللذي ارسل الي الرقم",
+    "button": "توثيق",
+    "Loading": "انتظار"
+  }
+}

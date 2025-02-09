@@ -1,0 +1,73 @@
+{
+  "HomePage": {
+    "navbar": {
+      "Register": "Register",
+      "Login": "Login",
+      "Home": "Home",
+      "Appointment": "Appointment",
+      "Quizzes": "Quizzes",
+      "Companies": "Companies",
+      "Med Clips": "Med Clips"
+    },
+    "heroSection": {
+      "First": "WELCOME IN CLEARS MIND",
+      "Second": "Clear Maind",
+      "Placeholder Search": "Search for Doctor..."
+    },
+    "Services": {
+      "Main": "Services",
+      "General": "General",
+      "Dental": "Dental",
+      "Radiology": "Radiology",
+      "More": "More"
+    },
+    "BestSpecialist": {
+      "Best Specialist": "Best Specialist",
+      "General": "General",
+      "Dental": "Dental",
+      "Radiology": "Radiology",
+      "Pediatrics": "Pediatrics"
+    },
+    "vedio": {
+      "main": "View More"
+    },
+    "footer": {
+      "About US": "About US",
+      "Appointment": "Appointment",
+      "Privacy Policy": "Privacy Policy",
+      "Contact Us": "Contact Us",
+      "Companies": "Companies",
+      "Trems & Conditions": "Trems & Conditions",
+      "Support": "Support",
+      "Med Clips": "Med Clips",
+      "Reserved": "All rights reserved 2025 ©"
+    }
+  },
+  "Login": {
+    "header": "Login",
+    "username": "User Name",
+    "password": "Password",
+    "button": "Login",
+    "Loading": "Loading",
+    "NotAccount": "Don’t have account?",
+    "RegisterNow": "Register Now",
+    "loginGoogle":"Login With Google"
+  },
+  "Register": {
+    "header": "Register",
+    "username": "User Name",
+    "fullName": "Full Name",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "button": "Register",
+    "Loading": "Loading",
+    "HaveAccount": "Already have account?",
+    "LoginNow": "Login Now"
+  },
+  "verification": {
+    "header": "Verification",
+    "text": "The verification code was sent to your phone.",
+    "button": "verify",
+    "Loading": "Loading"
+  }
+}
