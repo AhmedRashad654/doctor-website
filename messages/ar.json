@@ -69,5 +69,54 @@
     "text": "الكود اللذي ارسل الي الرقم",
     "button": "توثيق",
     "Loading": "انتظار"
+  },
+  "Doctors": {
+    "General": "عام",
+    "Dental": "طب الأسنان",
+    "Radiology": "الأشعة",
+    "Pediatrics": "طب الأطفال",
+    "More": "رؤية المزيد"
+  },
+  "profileDoctor": {
+    "Experience": "ألخبرة",
+    "Year": "سنة",
+    "Happy Patient": "مرضي سعداء",
+    "Rating": "التقييم",
+    "Review": "المراجعة",
+    "Details": {
+      "About Me": "عنا",
+      "Services": "الخدمات",
+      "Expertise": "الخبرة",
+      "Working Time": "اوقات العمل",
+      "Language": "اللغة",
+      "Services Location": "موقع الخدمة",
+      "Reviews": "المراجعات",
+      "Education": "التعليم",
+      "Awards": "الجوائز"
+    },
+    "Book Now": "حجز الان",
+    "category": {
+      "Details": "تفاصيل",
+      "Address": "العنوان",
+      "Reviews": "التقييم",
+      "Education": "التعليم",
+      "Awards": "جوائز"
+    }
+  },
+  "chat": {
+    "placeholder": "اكتب اي شئ..."
+  },
+  "appointment": {
+    "main": "المواعيد",
+    "Pendding Appointment": "المواعيد المنتظرة",
+    "Cancelled Appointment": "المواعيد الملغية",
+    "Approve Appointment": "المواعيد المقبولة"
+  },
+  "quizzes": {
+    "Quizzes": "الاسئلة",
+    "Next": "التالي",
+    "Finish": "انهاء",
+    "cangratulations": "تهانينا",
+    "passed": "لقد اجتزت الاختبار بنجاح"
   }
 }

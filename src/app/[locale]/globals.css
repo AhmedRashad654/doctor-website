@@ -8,8 +8,26 @@ body {
 .link-active {
   background-color: white;
   border-radius: 25px;
-  padding: 5px 25px;
+  padding: 7px 25px;
   color: #0a456f;
+}
+.not-active {
+  background-color: #eeffff;
+  border-radius: 25px;
+  padding: 7px 25px;
+  color: #0a456f;
+}
+.link-active2 {
+  background-color: #0a456f;
+  border-radius: 25px;
+  padding: 5px 25px;
+  color: white;
+}
+.link-active3 {
+  background-color: #0a456f;
+  border-radius: 5px;
+  padding: 5px 25px;
+  color: white;
 }
 /* react-phone-number */
 .form-control {
@@ -24,4 +42,15 @@ body {
   border-right: 1px solid white;
   text-align: left !important;
   direction: ltr !important;
+}
+/* border message  */
+.border-right {
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
+  border-bottom-left-radius: 35px;
+}
+.border-left {
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
+  border-bottom-right-radius: 35px;
 }

@@ -51,7 +51,7 @@
     "Loading": "Loading",
     "NotAccount": "Don’t have account?",
     "RegisterNow": "Register Now",
-    "loginGoogle":"Login With Google"
+    "loginGoogle": "Login With Google"
   },
   "Register": {
     "header": "Register",
@@ -69,5 +69,54 @@
     "text": "The verification code was sent to your phone.",
     "button": "verify",
     "Loading": "Loading"
+  },
+  "Doctors": {
+    "General": "General",
+    "Dental": "Dental",
+    "Radiology": "Radiology",
+    "Pediatrics": "Pediatrics",
+    "More": "View More"
+  },
+  "profileDoctor": {
+    "Experience": "Experince",
+    "Year": "Year",
+    "Happy Patient": "Happy Patient",
+    "Rating": "Rating",
+    "Review": "Review",
+    "Details": {
+      "About Me": "About Me",
+      "Services": "Services",
+      "Expertise": "Expertise",
+      "Working Time": "Working Time",
+      "Language": "Language",
+      "Services Location": "Services Location",
+      "Reviews": "Reviews",
+      "Education": "Education",
+      "Awards": "Awards"
+    },
+    "Book Now": "Book Now",
+    "category": {
+      "Details": "Details",
+      "Address": "Address",
+      "Reviews": "Reviews",
+      "Education": "Education",
+      "Awards": "Awards"
+    }
+  },
+  "chat": {
+    "placeholder": "Type Something..."
+  },
+  "appointment": {
+    "main": "appointment",
+    "Pendding Appointment": "Pendding Appointment",
+    "Cancelled Appointment": "Cancelled Appointment",
+    "Approve Appointment": "Approve Appointment"
+  },
+  "quizzes": {
+    "Quizzes": "Quizzes",
+    "Next": "Next",
+    "Finish":"Finish",
+    "cangratulations":"congaratolitions",
+    "passed":"you passed the quiz successfully."
   }
 }

@@ -38,7 +38,7 @@ const theme = createTheme({
     },
     placeholder: {
       main: "#dddddd",
-    },
+    }
   },
 });
 

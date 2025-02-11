@@ -59,7 +59,9 @@ export default function MiddleLinks() {
             href={item.path}
             onClick={handleCloseNavMenu}
             className={`text-primary ${
-              pathname === item.path ? "font-bold" : ""
+              pathname === item.path
+                ? "font-bold"
+                : ""
             }`}
           >
             {t(item.name)}

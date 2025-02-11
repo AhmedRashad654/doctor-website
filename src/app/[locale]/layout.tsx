@@ -9,7 +9,9 @@ import theme from "./theme";
 import Navbar from "@/components/HomePage/Navbar";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Footer from "@/components/HomePage/Footer";
-import NavbarAndFooterVisibility from "@/components/Shared/NavbarAndFooterVisibility";
+import FooterVisibility from "@/components/Shared/FooterVisibilty";
+import NavbarVisibility from "@/components/Shared/NavbarVisibility";
+import { ContextProvider } from "../../../context/ContextQuestion";
 
 export const metadata = {
   title: "clears mind",
@@ -34,16 +36,18 @@ export default async function LocaleLayout({
       <body>
         <AppRouterCacheProvider>
           <NextIntlClientProvider messages={messages}>
-            <ThemeProvider theme={theme}>
-              <NavbarAndFooterVisibility>
-                <Navbar locale={locale} />
-              </NavbarAndFooterVisibility>
-              {children}
-              <NavbarAndFooterVisibility>
-                <Footer />
-              </NavbarAndFooterVisibility>
-              <LanguageSwitcher />
-            </ThemeProvider>
+            <ContextProvider>
+              <ThemeProvider theme={theme}>
+                <NavbarVisibility>
+                  <Navbar locale={locale} />
+                </NavbarVisibility>
+                {children}
+                <FooterVisibility>
+                  <Footer />
+                </FooterVisibility>
+                <LanguageSwitcher />
+              </ThemeProvider>
+            </ContextProvider>
           </NextIntlClientProvider>
         </AppRouterCacheProvider>
       </body>
