@@ -7,7 +7,6 @@ import "./globals.css";
 import { ThemeProvider } from "@mui/material";
 import theme from "./theme";
 import Navbar from "@/components/HomePage/Navbar";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Footer from "@/components/HomePage/Footer";
 import FooterVisibility from "@/components/Shared/FooterVisibilty";
 import NavbarVisibility from "@/components/Shared/NavbarVisibility";
@@ -45,7 +44,6 @@ export default async function LocaleLayout({
                 <FooterVisibility>
                   <Footer />
                 </FooterVisibility>
-                <LanguageSwitcher />
               </ThemeProvider>
             </ContextProvider>
           </NextIntlClientProvider>

@@ -115,8 +115,44 @@
   "quizzes": {
     "Quizzes": "Quizzes",
     "Next": "Next",
-    "Finish":"Finish",
-    "cangratulations":"congaratolitions",
-    "passed":"you passed the quiz successfully."
+    "Finish": "Finish",
+    "cangratulations": "congaratolitions",
+    "passed": "you passed the quiz successfully."
+  },
+  "sidebar": {
+    "Edit Profile": "Edit Profile",
+    "General": "General",
+    "My Wallet": "My Wallet",
+    "Save Doctor": "Save Doctor",
+    "My Appointment": "My Appointment",
+    "Notification": "Notification",
+    "Account": "Account",
+    "About": "About",
+    "Language": "Language",
+    "Rate Us": "Rate Us",
+    "Share App": "Share App",
+    "Terms of Use": "Terms of Use",
+    "Privacy Policy": "Privacy Policy",
+    "Help & FAQ": "Help & FAQ",
+    "Log Out": "Log Out",
+    "Delete Account": "Delete Account"
+  },
+  "edit profile": {
+    "Full Name": "Full Name",
+    "Email": "Email",
+    "Save": "Save"
+  },
+  "saved doctor": {
+    "Saved doctor": "Saved Doctor",
+    "View More": "View More"
+  },
+  "my-wallet": {
+    "My Wallet": "My Wallet",
+    "Add Money": "Add Money",
+    "History": "History",
+    "Available Balance": "Available Balance"
+  },
+  "credit-card":{
+    
   }
 }

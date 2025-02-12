@@ -118,5 +118,41 @@
     "Finish": "انهاء",
     "cangratulations": "تهانينا",
     "passed": "لقد اجتزت الاختبار بنجاح"
+  },
+  "sidebar": {
+    "Edit Profile": "تعديل الحساب ",
+    "General": "عام",
+    "My Wallet": "محفظتي",
+    "Save Doctor": "الاطباء المحفوظة",
+    "My Appointment": "مواعيدي",
+    "Notification": "الإشعارات",
+    "Account": "الحساب",
+    "Language": "اللغة",
+    "About": "حول",
+    "Rate Us": "قيمنا",
+    "Share App": "مشاركة التطبيق",
+    "Terms of Use": "شروط الاستخدام",
+    "Privacy Policy": "سياسة الخصوصية",
+    "Help & FAQ": "المساعدة والأسئلة الشائعة",
+    "Log Out": "تسجيل الخروج",
+    "Delete Account": "حذف الحساب"
+  },
+  "edit profile": {
+    "Full Name": "الاسم كامل",
+    "Email": "الايميل",
+    "Save": "حفظ"
+  },
+  "saved doctor": {
+    "Saved doctor": "الاطباء المحفوظين",
+    "View More": "عرض المزيد"
+  },
+  "my-wallet": {
+    "My Wallet": "محفظتي",
+    "Add Money": "اضافة اموال",
+    "History": "التاريخ",
+    "Available Balance": "الرصيد المتاح"
+  },
+  "credit-card":{
+    
   }
 }
