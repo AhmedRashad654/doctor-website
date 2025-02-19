@@ -6,7 +6,7 @@ import { ContextQuestion } from "../../../../context/ContextQuestion";
 import Question from "./Question";
 import Answers from "./Answers";
 import { FakeQuestionType } from "@/constants/Types";
-import { FakeQuestion } from "@/constants/NavbarLinks";
+import { FakeQuestion } from "@/constants/ِArrays";
 import FinishQuizzes from "./FinishQuizzes";
 
 export default function QuizzesSection() {

@@ -2,8 +2,7 @@ import { Rating, Stack, Typography } from "@mui/material";
 
 import React from "react";
 
-export default function Reviews() {
- 
+export default function Reviews({ reviewCount }: { reviewCount: number }) {
   return (
     <Stack
       direction={"column"}
@@ -12,11 +11,11 @@ export default function Reviews() {
       alignItems={"center"}
     >
       <Typography variant="h2" color="warning">
-        0.0
+        {reviewCount}
       </Typography>
-      <Rating name="read-only" value={5} precision={0.5} readOnly />
+      <Rating name="read-only" value={reviewCount} precision={0.5} readOnly />
       <Typography variant="h5" color="primary.main">
-        (0.0 Ratings)
+        ({reviewCount} Ratings)
       </Typography>
     </Stack>
   );

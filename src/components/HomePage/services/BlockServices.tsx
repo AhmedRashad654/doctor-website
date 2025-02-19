@@ -1,24 +1,21 @@
+import { IServices } from "@/constants/Types";
 import { Link } from "@/i18n/routing";
 import { Box, Typography } from "@mui/material";
-import { getTranslations } from "next-intl/server";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 
-export default async function BlockServices({
-  image,
-  text,
+export default function BlockServices({
+  service,
 }: {
-  image: StaticImageData;
-  text: string;
+  service: IServices;
 }) {
-  const t = await getTranslations("HomePage.Services");
   return (
-    <Link href={text !== "More" ? `/doctors/${text}` : ""}>
+    <Link href={`/doctors/${service.name}`}>
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "15px",
+          gap: "20px",
         }}
       >
         <Box
@@ -34,19 +31,19 @@ export default async function BlockServices({
           }}
         >
           <Image
-            src={image}
+            src={service.image}
             alt="Services"
-            className={`${
-              text === "General" ? "w-[70%]" : "w-[50%]"
-            }  h-[50%] object-cover`}
+            className={`w-[50%] h-[50%] object-cover`}
+            width={70}
+            height={70}
           />
         </Box>
 
         <Typography
-          variant="h5"
+          variant="h6"
           sx={{ fontWeight: "bold", color: "primary.main" }}
         >
-          {t(text)}
+          {service.name}
         </Typography>
       </Box>
     </Link>

@@ -8,7 +8,7 @@ export default async function BlockSecondSection({
   text,
 }: {
   icon: JSX.Element;
-  header: string;
+  header: string | number;
   text: string;
 }) {
   const t = await getTranslations("profileDoctor");
@@ -37,9 +37,14 @@ export default async function BlockSecondSection({
 
       <Typography
         variant="h5"
-        sx={{ fontWeight: "bold", color: "primary.main", letterSpacing: "2px",marginBottom:"-5px" }}
+        sx={{
+          fontWeight: "bold",
+          color: "primary.main",
+          letterSpacing: "2px",
+          marginBottom: "-5px",
+        }}
       >
-        {header}{t("Year")}
+        {header}
       </Typography>
       <Typography variant="body1" sx={{ color: "primary.main" }}>
         {t(text)}

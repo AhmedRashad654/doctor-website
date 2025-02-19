@@ -1,7 +1,7 @@
 import React from "react";
 import { Avatar, Box, IconButton } from "@mui/material";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-export default function HeaderDetailsDoctor() {
+export default function HeaderDetailsDoctor({ image }: { image: string }) {
   return (
     <Box
       sx={{
@@ -22,7 +22,7 @@ export default function HeaderDetailsDoctor() {
       </IconButton>
       <Avatar
         alt="profile"
-        src="/assets/images/avatar.jpg"
+        src={image}
         sx={{
           position: "absolute",
           bottom: "-35%",

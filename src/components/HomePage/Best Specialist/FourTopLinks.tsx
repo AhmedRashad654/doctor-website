@@ -1,20 +1,16 @@
 import { Link } from "@/i18n/routing";
 import { Stack } from "@mui/material";
-import { getTranslations } from "next-intl/server";
+// import { getTranslations } from "next-intl/server";
 import React from "react";
 
 export default async function FourTopLinks({
   valueSearch,
+  linkSpecialist,
 }: {
   valueSearch: string;
+  linkSpecialist: string[];
 }) {
-  const t = await getTranslations("HomePage.BestSpecialist");
-  const links = [
-    { path: "/", name: "General", active: "/" },
-    { path: "/?tab=Dental", name: "Dental", active: "Dental" },
-    { path: "/?tab=Radiology", name: "Radiology", active: "Radiology" },
-    { path: "/?tab=Pediatrics", name: "Pediatrics", active: "Pediatrics" },
-  ];
+  // const t = await getTranslations("HomePage.BestSpecialist");
   return (
     <Stack
       sx={{
@@ -26,16 +22,20 @@ export default async function FourTopLinks({
       }}
       direction="row"
     >
-      {links.map((item) => (
+      {linkSpecialist.map((item, i) => (
         <Link
-          href={item.path}
+          href={`/?tab=${item}`}
           scroll={false}
-          key={item.path}
+          key={i}
           className={` ${
-            valueSearch === item.active ? "link-active" : ""
+            valueSearch === item
+              ? "link-active"
+              : valueSearch === "/" && i === 0
+              ? "link-active"
+              : ""
           } text-white text-[1.2rem] font-semibold`}
         >
-          {t(item.name)}
+          {item}
         </Link>
       ))}
     </Stack>

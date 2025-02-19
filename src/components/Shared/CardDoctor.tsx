@@ -7,12 +7,12 @@ import {
   Box,
 } from "@mui/material";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-import Avatar from "../../../public/assets/images/avatar.jpg";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
-export default function CardDoctor() {
+import { Doctor } from "@/constants/Types";
+export default function CardDoctor({ doctor }: { doctor: Doctor }) {
   return (
-    <Link href={`/profile-doctor/12345`}>
+    <Link href={`/profile-doctor/${doctor._id}`}>
       <Card
         sx={{
           borderRadius: "16px",
@@ -34,26 +34,32 @@ export default function CardDoctor() {
         </IconButton>
 
         <Image
-          height="140"
-          src={Avatar}
+          height={170}
+          src={doctor.image}
+          width={140}
           alt="Profile Image"
-          className="mt-[30px] mx-auto"
+          className="mt-[30px] h-[140px] mx-auto"
           style={{ borderRadius: "50%" }}
         />
 
         <CardContent>
           <Typography variant="h6" fontWeight="bold" color="primary.main">
-            Dr.Ali Elsham
+            {doctor.name}
           </Typography>
           <Typography variant="body2" color="secondary.main">
-            MBBS, Pediatrcs
+            {doctor.degree?.slice(0, 2).join(", ")}
           </Typography>
           <Typography variant="body2" mt={1} color="secondary.main">
-            Pediatrician | Brow Pediat...
+            {doctor.expertise?.slice(0, 2).join(", ")}
           </Typography>
 
           <Box mt={1}>
-            <Rating name="read-only" value={4.5} precision={0.5} readOnly />
+            <Rating
+              name="read-only"
+              value={doctor.rating}
+              precision={0.5}
+              readOnly
+            />
           </Box>
         </CardContent>
       </Card>

@@ -10,7 +10,8 @@ import Reviews from "./BlocksDetailsDoctor/Reviews";
 import Education from "./BlocksDetailsDoctor/Education";
 import Awards from "./BlocksDetailsDoctor/Awards";
 import Book from "./Book";
-
+import { cookies } from "next/headers";
+import { getProfileDoctor } from "@/services/api/profileDoctor";
 export default async function DetailsDoctor({
   searchParams,
   params,
@@ -22,25 +23,29 @@ export default async function DetailsDoctor({
 }) {
   const search = await searchParams;
   const { doctorId } = await params;
- 
+
+  const cookieStore = await cookies();
   const valueSearch = search?.categoryDoctor || "/";
+  const userId = cookieStore.get("userId_Doctor");
+  if (!userId) throw new Error("You Must Login");
+  const profile = await getProfileDoctor(doctorId, userId.value);
   return (
     <Box>
-      <HeaderDetailsDoctor />
+      <HeaderDetailsDoctor image={profile.image} />
       <Container>
-        <FirstSection />
-        <SecondSection />
+        <FirstSection profile={profile} />
+        <SecondSection profile={profile} />
         <LinksProfileDoctor valueSearch={valueSearch} doctorId={doctorId} />
         {valueSearch === "/" ? (
-          <Details />
+          <Details profile={profile} />
         ) : valueSearch === "Address" ? (
-          <Addres />
+          <Addres address={profile.address} />
         ) : valueSearch === "Reviews" ? (
-          <Reviews />
+          <Reviews reviewCount={profile.reviewCount} />
         ) : valueSearch === "Education" ? (
-          <Education />
+          <Education education={profile.education} />
         ) : valueSearch === "Awards" ? (
-          <Awards />
+          <Awards awards={profile.awards} />
         ) : (
           ""
         )}

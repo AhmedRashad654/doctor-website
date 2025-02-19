@@ -140,6 +140,12 @@
   "edit profile": {
     "Full Name": "Full Name",
     "Email": "Email",
+    "Age":"Age",
+    "Mobile":"Mobile",
+    "bio":"bio",
+    "Gender":"Gender",
+    "Country":"Country",
+
     "Save": "Save"
   },
   "saved doctor": {

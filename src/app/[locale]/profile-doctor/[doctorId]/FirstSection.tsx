@@ -1,7 +1,8 @@
+import { Doctor } from "@/constants/Types";
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 
-export default function FirstSection() {
+export default function FirstSection({ profile }: { profile: Doctor }) {
   return (
     <Stack
       direction={"row"}
@@ -13,13 +14,13 @@ export default function FirstSection() {
     >
       <Stack>
         <Typography variant="h4" color="primary.main">
-          Dr. Ahmed Rashad
+          {profile?.name}
         </Typography>
         <Typography variant="h6" color="secondary.main">
-          MBBS, Pediatrics
+          {profile.degree?.slice(0, 2).join(", ")}
         </Typography>
         <Typography variant="body1" color="#777">
-          Brown Pediatric, 789 High St, London
+          {profile.address}
         </Typography>
       </Stack>
       <Box

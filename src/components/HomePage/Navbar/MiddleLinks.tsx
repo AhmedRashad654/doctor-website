@@ -4,7 +4,7 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, usePathname } from "@/i18n/routing";
 import { Box, IconButton, List, ListItem } from "@mui/material";
-import { navbarLinks } from "@/constants/NavbarLinks";
+import { navbarLinks } from "@/constants/ِArrays";
 import { useTranslations } from "next-intl";
 export default function MiddleLinks() {
   const pathname = usePathname();
@@ -59,9 +59,7 @@ export default function MiddleLinks() {
             href={item.path}
             onClick={handleCloseNavMenu}
             className={`text-primary ${
-              pathname === item.path
-                ? "font-bold"
-                : ""
+              pathname === item.path ? "font-bold" : ""
             }`}
           >
             {t(item.name)}

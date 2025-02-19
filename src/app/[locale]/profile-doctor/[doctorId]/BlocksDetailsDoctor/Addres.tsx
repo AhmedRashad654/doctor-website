@@ -2,8 +2,8 @@ import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { getTranslations } from "next-intl/server";
-export default async function Addres() {
-   const t = await getTranslations("profileDoctor.Details");
+export default async function Addres({ address }:{address:string}) {
+  const t = await getTranslations("profileDoctor.Details");
   return (
     <Stack direction={"column"} spacing={1}>
       <Stack
@@ -23,7 +23,7 @@ export default async function Addres() {
           color: "primary.main",
         }}
       >
-        . Brown Pediatric Clinic 789 High St, London
+        . {address}
       </Box>
     </Stack>
   );

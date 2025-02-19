@@ -11,6 +11,9 @@ import Footer from "@/components/HomePage/Footer";
 import FooterVisibility from "@/components/Shared/FooterVisibilty";
 import NavbarVisibility from "@/components/Shared/NavbarVisibility";
 import { ContextProvider } from "../../../context/ContextQuestion";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import StoreProvider from "./StoreProvider";
+import ClientLayout from "./ClientLayout";
 
 export const metadata = {
   title: "clears mind",
@@ -29,25 +32,34 @@ export default async function LocaleLayout({
     notFound();
   }
   const messages = await getMessages();
-
+  const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+  if (!CLIENT_ID) {
+    throw new Error("Google Client ID is missing!");
+  }
   return (
     <html lang={locale} dir={dir}>
       <body>
-        <AppRouterCacheProvider>
-          <NextIntlClientProvider messages={messages}>
-            <ContextProvider>
-              <ThemeProvider theme={theme}>
-                <NavbarVisibility>
-                  <Navbar locale={locale} />
-                </NavbarVisibility>
-                {children}
-                <FooterVisibility>
-                  <Footer />
-                </FooterVisibility>
-              </ThemeProvider>
-            </ContextProvider>
-          </NextIntlClientProvider>
-        </AppRouterCacheProvider>
+        <StoreProvider>
+          <ClientLayout>
+            <AppRouterCacheProvider>
+              <GoogleOAuthProvider clientId={CLIENT_ID}>
+                <NextIntlClientProvider messages={messages}>
+                  <ContextProvider>
+                    <ThemeProvider theme={theme}>
+                      <NavbarVisibility>
+                        <Navbar locale={locale} />
+                      </NavbarVisibility>
+                      {children}
+                      <FooterVisibility>
+                        <Footer />
+                      </FooterVisibility>
+                    </ThemeProvider>
+                  </ContextProvider>
+                </NextIntlClientProvider>
+              </GoogleOAuthProvider>
+            </AppRouterCacheProvider>
+          </ClientLayout>
+        </StoreProvider>
       </body>
     </html>
   );

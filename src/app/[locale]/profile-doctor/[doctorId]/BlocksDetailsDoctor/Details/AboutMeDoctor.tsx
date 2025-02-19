@@ -2,8 +2,8 @@ import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import Person4Icon from "@mui/icons-material/Person4";
 import { getTranslations } from "next-intl/server";
-export default async function AboutMeDoctor() {
-   const t = await getTranslations("profileDoctor.Details");
+export default async function AboutMeDoctor({ about }: { about: string }) {
+  const t = await getTranslations("profileDoctor.Details");
   return (
     <Stack direction={"column"}>
       <Stack
@@ -23,8 +23,7 @@ export default async function AboutMeDoctor() {
           color: "primary.main",
         }}
       >
-        Compassionate pediatrician with a focus on providing holistic care for
-        childern and adolescents
+        {about}
       </Box>
     </Stack>
   );

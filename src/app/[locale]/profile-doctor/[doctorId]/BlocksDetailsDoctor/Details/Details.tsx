@@ -5,15 +5,15 @@ import ServicesDoctor from "./ServicesDoctor";
 import ExperitsDoctor from "./ExperitsDoctor";
 import WorkingTimeDoctor from "./WorkingTimeDoctor";
 import LanguageDoctor from "./LanguageDoctor";
-
-export default function Details() {
+import { Doctor } from "@/constants/Types";
+export default function Details({ profile }: { profile: Doctor }) {
   return (
     <Stack direction="column" spacing={3}>
-      <AboutMeDoctor />
-      <ServicesDoctor />
-      <ExperitsDoctor />
-      <WorkingTimeDoctor />
-      <LanguageDoctor />
+      <AboutMeDoctor about={profile.yourSelf} />
+      <ServicesDoctor service={profile.service} />
+      <ExperitsDoctor expertise={profile.expertise} />
+      <WorkingTimeDoctor schedule={profile.schedule} />
+      <LanguageDoctor language={ profile.language} />
     </Stack>
   );
 }

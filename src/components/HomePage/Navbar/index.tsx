@@ -1,7 +1,7 @@
 import { Box, Stack, Toolbar } from "@mui/material";
 import IconProfile from "./IconProfile";
 import MiddleLinks from "./MiddleLinks";
-import LoginAndRegister from "./LoginAndRegister";
+// import LoginAndRegister from "./LoginAndRegister";
 
 function Navbar({ locale }: { locale: string }) {
   return (
@@ -29,8 +29,6 @@ function Navbar({ locale }: { locale: string }) {
       >
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Stack direction={"row"} gap={"50px"}>
-            {/* login and register  */}
-            <LoginAndRegister />
             {/* middle links */}
             <MiddleLinks />
           </Stack>

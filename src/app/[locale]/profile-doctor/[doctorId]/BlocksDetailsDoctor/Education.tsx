@@ -2,8 +2,8 @@ import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import SchoolIcon from "@mui/icons-material/School";
 import { getTranslations } from "next-intl/server";
-export default async function Education() {
-     const t = await getTranslations("profileDoctor.Details");
+export default async function Education({ education }: { education: string }) {
+  const t = await getTranslations("profileDoctor.Details");
   return (
     <Stack direction={"column"} spacing={1}>
       <Stack
@@ -23,9 +23,8 @@ export default async function Education() {
           color: "primary.main",
         }}
       >
-        . Dental care
+        . {education}
       </Box>
     </Stack>
   );
 }
-

@@ -1,14 +1,31 @@
 "use client";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
 import Image from "next/image";
 import userLogin from "../../../../../public/assets/images/userLogin.png";
 import HeaderAuth from "../HeaderAuth";
 import CustomInput from "../CustomInput";
-import { AccountCircleOutlined, Google } from "@mui/icons-material";
-import { Link } from "@/i18n/routing";
+import { AccountCircleOutlined } from "@mui/icons-material";
 import { useTranslations } from "next-intl";
+import { GoogleLogin } from "@react-oauth/google";
+import { useDispatch, useSelector } from "react-redux";
+import { UserState } from "@/constants/Types";
+import { loginWithGoogle } from "@/services/api/auth";
+import { useEffect } from "react";
+import { useRouter } from "@/i18n/routing";
+
 export default function Login() {
   const t = useTranslations("Login");
+  const dispatch = useDispatch();
+  const user = useSelector((state: { user: UserState }) => state?.user);
+  const router = useRouter();
+  
+
+  useEffect(() => {
+    if (user && user._id) {
+      router.push("/");
+    }
+  }, [user, router]);
+
   return (
     <Stack
       sx={{
@@ -78,35 +95,18 @@ export default function Login() {
             fontWeight: "semibold",
             fontSize: "1.2rem",
             textTransform: "none",
-           
           }}
         >
           {t("button")}
         </Button>
-        <Button
-          variant="contained"
-          startIcon={<Google />}
-          sx={{
-            backgroundColor: "#DB4437",
-            color: "white",
-            textTransform: "none",
-            width: "100%",
-            padding: "10px",
-            fontWeight: "semibold",
-            fontSize: "1.2rem",
-            marginTop: "10px",
-            borderRadius: "10px",
-          }}
-        >
-          {t("loginGoogle")}
-        </Button>
-        <Typography
-          variant="body1"
-          sx={{ mt: 2, color: "white", cursor: "pointer", textAlign: "center" }}
-        >
-          {t("NotAccount")}
-          <Link href={"/register"}> {t("RegisterNow")}</Link>
-        </Typography>
+        <Box sx={{ marginTop: "10px", width: "100%" }}>
+          <GoogleLogin
+            onSuccess={(response) =>
+              loginWithGoogle(response, dispatch, router)
+            }
+            onError={() => console.log("Faild login")}
+          />
+        </Box>
       </Box>
     </Stack>
   );

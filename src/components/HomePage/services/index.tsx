@@ -1,14 +1,13 @@
 import { Container, Stack, Typography } from "@mui/material";
 import React from "react";
 import BlockServices from "./BlockServices";
-import userImage from "../../../../public/assets/images/mdi_users.png";
-import distant from "../../../../public/assets/images/Vector (1).png";
-import radiology from "../../../../public/assets/images/Vector (2).png";
-import more from "../../../../public/assets/images/icon-park-solid_more-app.png";
 import { getTranslations } from "next-intl/server";
+import { IServices } from "@/constants/Types";
+import { getServices } from "@/services/api/services";
 
 export default async function Services() {
   const t = await getTranslations("HomePage.Services");
+  const services: IServices[] = await getServices();
   return (
     <Container sx={{ paddingY: "30px" }}>
       <Typography variant="h3" fontWeight={"bold"} color="primary.main">
@@ -16,16 +15,15 @@ export default async function Services() {
       </Typography>
       <Stack
         direction={"row"}
-        justifyContent={"space-between"}
-        gap={"40px"}
+        gap={"35px"}
         alignItems={"center"}
+        justifyContent={"space-between"}
         paddingY={"50px"}
         flexWrap={"wrap"}
       >
-        <BlockServices image={userImage} text={"General"} />
-        <BlockServices image={distant} text={"Dental"} />
-        <BlockServices image={radiology} text={"Radiology"} />
-        <BlockServices image={more} text={"More"} />
+        {services.map((service: IServices) => (
+          <BlockServices service={service} key={service._id} />
+        ))}
       </Stack>
     </Container>
   );

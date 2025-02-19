@@ -138,8 +138,13 @@
     "Delete Account": "حذف الحساب"
   },
   "edit profile": {
-    "Full Name": "الاسم كامل",
-    "Email": "الايميل",
+    "Full Name": "الاسم الكامل",
+    "Email": "البريد الإلكتروني",
+    "Age": "العمر",
+    "Mobile": "رقم الهاتف",
+    "bio": "السيرة الذاتية",
+    "Gender": "الجنس",
+    "Country": "الدولة",
     "Save": "حفظ"
   },
   "saved doctor": {
@@ -152,7 +157,5 @@
     "History": "التاريخ",
     "Available Balance": "الرصيد المتاح"
   },
-  "credit-card":{
-    
-  }
+  "credit-card": {}
 }

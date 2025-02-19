@@ -27,9 +27,16 @@ import EditIcon from "@mui/icons-material/Edit";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { setLogout } from "@/redux/features/userSlice";
 
 export default function Sidebar() {
   const t = useTranslations("sidebar");
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.user);
+  const handleLogout = () => {
+    dispatch(setLogout());
+  };
   return (
     <Box
       sx={{
@@ -50,13 +57,10 @@ export default function Sidebar() {
         padding={"15px"}
         borderRadius={"10px"}
       >
-        <Avatar
-          src="/assets/images/avatar.jpg"
-          sx={{ width: 70, height: 70 }}
-        />
+        <Avatar src={user.image} sx={{ width: 70, height: 70 }} />
         <Box>
-          <Typography fontWeight="bold">Ahmed Ali</Typography>
-          <Typography variant="body1">Ahmed23@gmail.com</Typography>
+          <Typography fontWeight="bold">{user.name}</Typography>
+          <Typography variant="body1">{user.email?.slice(0, 17)}</Typography>
           <Link href={`/editProfile`}>
             <Stack
               direction="row"
@@ -70,7 +74,6 @@ export default function Sidebar() {
               }}
             >
               <EditIcon />
-
               <Typography variant="body1">{t("Edit Profile")}</Typography>
             </Stack>
           </Link>
@@ -173,7 +176,7 @@ export default function Sidebar() {
             </ListItemIcon>
             <ListItemText primary={t("Help & FAQ")} />
           </ListItemButton>
-          <ListItemButton>
+          <ListItemButton onClick={handleLogout}>
             <ListItemIcon>
               <ExitToApp />
             </ListItemIcon>
