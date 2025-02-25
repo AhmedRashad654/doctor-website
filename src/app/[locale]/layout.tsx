@@ -10,7 +10,7 @@ import Navbar from "@/components/HomePage/Navbar";
 import Footer from "@/components/HomePage/Footer";
 import FooterVisibility from "@/components/Shared/FooterVisibilty";
 import NavbarVisibility from "@/components/Shared/NavbarVisibility";
-import { ContextProvider } from "../../../context/ContextQuestion";
+import { ContextProvider } from "../../../context/ContextUseState";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import StoreProvider from "./StoreProvider";
 import ClientLayout from "./ClientLayout";
@@ -39,11 +39,11 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={dir}>
       <body>
-        <StoreProvider>
-          <ClientLayout>
-            <AppRouterCacheProvider>
-              <GoogleOAuthProvider clientId={CLIENT_ID}>
-                <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={messages}>
+          <StoreProvider>
+            <ClientLayout>
+              <AppRouterCacheProvider>
+                <GoogleOAuthProvider clientId={CLIENT_ID}>
                   <ContextProvider>
                     <ThemeProvider theme={theme}>
                       <NavbarVisibility>
@@ -55,11 +55,11 @@ export default async function LocaleLayout({
                       </FooterVisibility>
                     </ThemeProvider>
                   </ContextProvider>
-                </NextIntlClientProvider>
-              </GoogleOAuthProvider>
-            </AppRouterCacheProvider>
-          </ClientLayout>
-        </StoreProvider>
+                </GoogleOAuthProvider>
+              </AppRouterCacheProvider>
+            </ClientLayout>
+          </StoreProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

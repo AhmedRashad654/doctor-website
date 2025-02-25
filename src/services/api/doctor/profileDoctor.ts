@@ -10,6 +10,7 @@ export const getProfileDoctor = async (doctorId: string, userId: string) => {
       headers: {
         key: process.env.NEXT_PUBLIC_SECRET_KEY || "",
       },
+          next: { revalidate: 300 },
     }
   );
   const response = await request.json();

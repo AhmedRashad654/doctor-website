@@ -9,7 +9,7 @@ export default function BlockServices({
   service: IServices;
 }) {
   return (
-    <Link href={`/doctors/${service.name}`}>
+    <Link href={`/doctors/${service.name}?serviceId=${service._id}`}>
       <Box
         sx={{
           display: "flex",

@@ -1,21 +1,17 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Stack } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { ContextQuestion } from "../../../../context/ContextQuestion";
 import Question from "./Question";
 import Answers from "./Answers";
 import { FakeQuestionType } from "@/constants/Types";
 import { FakeQuestion } from "@/constants/ِArrays";
 import FinishQuizzes from "./FinishQuizzes";
+import { useContextState } from "../../../../context/ContextUseState";
 
 export default function QuizzesSection() {
   const t = useTranslations("quizzes");
-  const context = useContext(ContextQuestion);
-  if (!context) {
-    throw new Error("Context Not Found");
-  }
-  const { numberQuestion, setNumberQuestion } = context;
+  const { numberQuestion, setNumberQuestion } = useContextState();
   const [Questions, setQuestions] = useState<FakeQuestionType>();
   const [showFinishQuizzes, setShowFinishQuizzes] = useState<boolean>(false);
 

@@ -157,5 +157,9 @@
     "History": "التاريخ",
     "Available Balance": "الرصيد المتاح"
   },
-  "credit-card": {}
+  "history":{
+    "Payment History": "سجلات الدفع",
+    "label date": "اختر التاريخ"
+  }
+  
 }

@@ -93,3 +93,17 @@ export const FakeQuestion = [
     ],
   },
 ];
+export const InputStripe = [
+  {
+    label: "Card Number",
+    componant: "CardNumberElement",
+  },
+  {
+    label: "Expiry Date",
+    componant: "CardExpiryElement",
+  },
+  {
+    label: "CVC",
+    componant: "CardCvcElement",
+  },
+];

@@ -158,7 +158,8 @@
     "History": "History",
     "Available Balance": "Available Balance"
   },
-  "credit-card":{
-    
+  "history":{
+    "Payment History": "Payment History",
+    "label date": "Select Date"
   }
 }

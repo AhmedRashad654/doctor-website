@@ -2,13 +2,11 @@ export interface FakeQuestionType {
   question: string;
   answers: string[];
 }
-
 export interface Option {
   name_en: string;
   name_ar: string;
   code?: string;
 }
-
 export interface EditProfileField {
   text: string;
   name: string;
@@ -63,16 +61,15 @@ export interface IServices {
   updatedAt: string;
 }
 export interface Schedule {
-  day: string; 
+  day: string;
   startTime: string;
   endTime: string;
-  breakStartTime: string; 
-  breakEndTime: string; 
-  timeSlot: number; 
+  breakStartTime: string;
+  breakEndTime: string;
+  timeSlot: number;
   isBreak: boolean;
-  _id: string; 
+  _id: string;
 }
-
 export interface Doctor {
   _id: string;
   uniqueId: number;
@@ -125,9 +122,26 @@ export interface Doctor {
   updatedAt: string;
   isSaved: boolean;
 }
-
 export interface IBestSpecialist {
   serviceId: string;
   serviceName: string;
   doctors: Doctor[];
+}
+export interface walletUser {
+  amount: number;
+}
+export interface IWalletHistory {
+  _id: string;
+  user: string;
+  wallet: string;
+  amount: number;
+  date: string;
+  paymentGateway: number;
+  type: number;
+  couponId: string;
+  uniqueId: string;
+  time: string;
+  createdAt: string;
+  updatedAt: string;
+  month: string;
 }

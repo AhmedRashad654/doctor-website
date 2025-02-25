@@ -11,7 +11,7 @@ import Education from "./BlocksDetailsDoctor/Education";
 import Awards from "./BlocksDetailsDoctor/Awards";
 import Book from "./Book";
 import { cookies } from "next/headers";
-import { getProfileDoctor } from "@/services/api/profileDoctor";
+import { getProfileDoctor } from "@/services/api/doctor/profileDoctor";
 export default async function DetailsDoctor({
   searchParams,
   params,

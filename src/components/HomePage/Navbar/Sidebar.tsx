@@ -26,7 +26,7 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/routing";
+import { Link, useRouter } from "@/i18n/routing";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setLogout } from "@/redux/features/userSlice";
 
@@ -34,8 +34,10 @@ export default function Sidebar() {
   const t = useTranslations("sidebar");
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.user);
+  const router = useRouter();
   const handleLogout = () => {
     dispatch(setLogout());
+    router.push("/login");
   };
   return (
     <Box

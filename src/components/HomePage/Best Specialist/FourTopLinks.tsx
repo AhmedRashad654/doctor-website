@@ -22,7 +22,7 @@ export default async function FourTopLinks({
       }}
       direction="row"
     >
-      {linkSpecialist.map((item, i) => (
+      {linkSpecialist?.length > 0 && linkSpecialist?.map((item, i) => (
         <Link
           href={`/?tab=${item}`}
           scroll={false}

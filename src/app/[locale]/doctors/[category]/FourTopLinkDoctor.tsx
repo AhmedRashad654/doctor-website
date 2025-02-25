@@ -1,24 +1,19 @@
+import { IServices } from "@/constants/Types";
 import { Link } from "@/i18n/routing";
+import { getServices } from "@/services/api/services";
 import { Stack } from "@mui/material";
-import { getTranslations } from "next-intl/server";
 import React from "react";
 
 export default async function FourTopLinkDoctor({
-  valueSearch,
+  valueServiceName,
 }: {
-  valueSearch: string;
+  valueServiceName: string;
 }) {
-  const t = await getTranslations("Doctors");
-  const links = [
-    { path: "/doctors/General", name: "General", active: "General" },
-    { path: "/doctors/Dental", name: "Dental", active: "Dental" },
-    { path: "/doctors/Radiology", name: "Radiology", active: "Radiology" },
-    { path: "/doctors/Pediatrics", name: "Pediatrics", active: "Pediatrics" },
-  ];
+  const services: IServices[] = await getServices();
   return (
     <Stack
       sx={{
-        paddingY: "30px",
+        padding: "30px 10px",
         justifyContent: "space-between",
         alignItems: "center",
         gap: "30px",
@@ -26,18 +21,19 @@ export default async function FourTopLinkDoctor({
       }}
       direction="row"
     >
-      {links.map((item) => (
-        <Link
-          href={item.path}
-          scroll={false}
-          key={item.path}
-          className={` ${
-            valueSearch === item.active ? "link-active2" : ""
-          } text-primary text-[1.2rem] font-semibold`}
-        >
-          {t(item.name)}
-        </Link>
-      ))}
+      {services &&
+        services?.map((item: IServices) => (
+          <Link
+            href={`/doctors/${item.name}?serviceId=${item._id}`}
+            scroll={false}
+            key={item._id}
+            className={` ${
+              valueServiceName === item.name ? "link-active2" : ""
+            } text-primary text-[1.2rem] font-semibold`}
+          >
+            {item.name}
+          </Link>
+        ))}
     </Stack>
   );
 }

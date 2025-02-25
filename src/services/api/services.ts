@@ -1,5 +1,7 @@
 import { url } from "@/axios/axios";
 import { IBestSpecialist } from "@/constants/Types";
+import { cookies } from "next/headers";
+
 /*
  * get services
  */
@@ -18,7 +20,10 @@ export const getServices = async () => {
 /*
  * get best specialist
  */
-export const getBestSpecialist = async (userId: string) => {
+export const getBestSpecialist = async () => {
+  const cookieStore = await cookies();
+  const userId = cookieStore.get("userId_Doctor")?.value;
+  if (!userId) return { linkSpecialist: [], bestSpecialist: [] };
   const request = await fetch(
     `${url}/user/doctor/getDoctorsServiceWise?userId=${userId}`,
     {

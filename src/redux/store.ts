@@ -1,12 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./features/userSlice";
-// import jopSavesSlice from "./features/savedJopsSlice";
+import walletUserSlice from "./features/walletUserSlice";
+import walletHistorySlice from "./features/walletHistorySlice";
+import savedDoctorSlice from "./features/savedDoctorsSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       user: userSlice,
-      // jopSaves: jopSavesSlice,
+      wallet: walletUserSlice,
+      history: walletHistorySlice,
+      savedDoctor: savedDoctorSlice,
     },
   });
 };
