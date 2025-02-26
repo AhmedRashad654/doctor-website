@@ -1,6 +1,6 @@
 import { Skeleton, Box, keyframes } from "@mui/material";
 
-export default function LoadingSkeleton() {
+export default function LoadingSkeleton({ height ,width}: { height: number,width:string }) {
   const fastPulse = keyframes`
   0% { opacity: 0.5; }
   50% { opacity: 1; }
@@ -10,8 +10,8 @@ export default function LoadingSkeleton() {
     <Box sx={{ marginTop: "30px" }}>
       <Skeleton
         variant="rectangular"
-        width="100%"
-        height={80}
+        width={width}
+        height={height}
         sx={{
           mb: 2,
           borderRadius: "10px",
@@ -20,8 +20,8 @@ export default function LoadingSkeleton() {
       />
       <Skeleton
         variant="rectangular"
-        width="100%"
-        height={80}
+        width={width}
+        height={height}
         sx={{
           mb: 2,
           borderRadius: "10px",
@@ -30,8 +30,8 @@ export default function LoadingSkeleton() {
       />
       <Skeleton
         variant="rectangular"
-        width="100%"
-        height={80}
+        width={width}
+        height={height}
         sx={{
           mb: 2,
           borderRadius: "10px",

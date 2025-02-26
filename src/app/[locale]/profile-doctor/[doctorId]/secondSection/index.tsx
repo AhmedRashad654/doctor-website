@@ -8,7 +8,6 @@ import GradeIcon from "@mui/icons-material/Grade";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import { getTranslations } from "next-intl/server";
 export default async function SecondSection({ profile }: { profile: Doctor }) {
-  
   const t = await getTranslations("profileDoctor");
 
   return (

@@ -21,7 +21,8 @@ export default function DisplayCardsHistory() {
     }
   }, [dispatch, selectedDate, walletHistory.status]);
 
-  if (walletHistory?.status === "loading") return <LoadingSkeleton />;
+  if (walletHistory?.status === "loading")
+    return <LoadingSkeleton height={70} width={"100%"} />;
 
   if (
     walletHistory?.status === "succeeded" &&

@@ -1,4 +1,5 @@
 "use client";
+import { Doctor } from "@/constants/Types";
 import dayjs, { Dayjs } from "dayjs";
 import {
   createContext,
@@ -14,10 +15,13 @@ interface ContextType {
   setNumberQuestion: Dispatch<SetStateAction<number>>;
   selectedDate: Dayjs;
   setSelectedDate: Dispatch<SetStateAction<Dayjs>>;
+  profileDoctor: Doctor | null;
+  setProfileDoctor: Dispatch<SetStateAction<Doctor | null>>;
 }
 const ContextUseState = createContext<ContextType | undefined>(undefined);
 function ContextProvider({ children }: { children: ReactNode }) {
   const [numberQuestion, setNumberQuestion] = useState<number>(1);
+  const [profileDoctor, setProfileDoctor] = useState<Doctor | null>(null);
   const [selectedDate, setSelectedDate] = useState<Dayjs>(
     dayjs().startOf("month")
   );
@@ -28,6 +32,8 @@ function ContextProvider({ children }: { children: ReactNode }) {
         setNumberQuestion,
         selectedDate,
         setSelectedDate,
+        profileDoctor,
+        setProfileDoctor,
       }}
     >
       {children}

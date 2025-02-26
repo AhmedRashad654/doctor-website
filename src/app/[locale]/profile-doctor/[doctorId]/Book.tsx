@@ -1,10 +1,19 @@
+"use client";
 import { Button, IconButton, Stack } from "@mui/material";
-import { getTranslations } from "next-intl/server";
-import React from "react";
+import React, { useEffect } from "react";
 import ChatIcon from "@mui/icons-material/Chat";
-import { Link } from "@/i18n/routing";
-export default async function Book({ doctorId }: { doctorId: string }) {
-  const t = await getTranslations("profileDoctor");
+import { Link, useRouter } from "@/i18n/routing";
+import { Doctor } from "@/constants/Types";
+import { transferAmount } from "@/services/functionShares";
+import { useTranslations } from "next-intl";
+import { useContextState } from "../../../../../context/ContextUseState";
+export default function Book({ doctor }: { doctor: Doctor }) {
+  const t = useTranslations("profileDoctor");
+  const router = useRouter();
+  const { setProfileDoctor } = useContextState();
+  useEffect(() => {
+    setProfileDoctor(doctor);
+  }, [doctor, setProfileDoctor]);
   return (
     <Stack
       alignItems={"center"}
@@ -14,6 +23,9 @@ export default async function Book({ doctorId }: { doctorId: string }) {
       sx={{ marginY: "30px" }}
     >
       <Button
+        onClick={() => {
+          router.push(`/profile-doctor/${doctor?._id}/booking`);
+        }}
         sx={{
           backgroundColor: "primary.main",
           color: "white",
@@ -25,9 +37,9 @@ export default async function Book({ doctorId }: { doctorId: string }) {
           textTransform: "none",
         }}
       >
-        {t("Book Now")} :200$
+        {t("Book Now")} :{transferAmount(doctor?.charge)}
       </Button>
-      <Link href={`/chat/${doctorId}`}>
+      <Link href={`/chat/${doctor?._id}`}>
         <IconButton>
           <ChatIcon sx={{ fontSize: "40px", color: "primary.main" }} />
         </IconButton>

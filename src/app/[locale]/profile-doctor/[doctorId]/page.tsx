@@ -33,7 +33,11 @@ export default async function DetailsDoctor({
     <Box>
       <HeaderDetailsDoctor image={profile.image} />
       <Container>
-        <FirstSection profile={profile} />
+        <FirstSection
+          name={profile?.name}
+          degree={profile.degree}
+          address={profile.address}
+        />
         <SecondSection profile={profile} />
         <LinksProfileDoctor valueSearch={valueSearch} doctorId={doctorId} />
         {valueSearch === "/" ? (
@@ -49,7 +53,7 @@ export default async function DetailsDoctor({
         ) : (
           ""
         )}
-        <Book doctorId={doctorId} />
+        <Book doctor={profile} />
       </Container>
     </Box>
   );

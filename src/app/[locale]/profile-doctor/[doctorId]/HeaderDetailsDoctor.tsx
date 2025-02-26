@@ -1,6 +1,5 @@
 import React from "react";
-import { Avatar, Box, IconButton } from "@mui/material";
-import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import { Avatar, Box } from "@mui/material";
 export default function HeaderDetailsDoctor({ image }: { image: string }) {
   return (
     <Box
@@ -11,15 +10,6 @@ export default function HeaderDetailsDoctor({ image }: { image: string }) {
         backgroundColor: "primary.main",
       }}
     >
-      <IconButton
-        sx={{
-          position: "absolute",
-          top: 15,
-          right: 15,
-        }}
-      >
-        <BookmarkBorderIcon sx={{ color: "white" }} />
-      </IconButton>
       <Avatar
         alt="profile"
         src={image}

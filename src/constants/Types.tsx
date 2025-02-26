@@ -145,3 +145,14 @@ export interface IWalletHistory {
   updatedAt: string;
   month: string;
 }
+export interface IDateDoctor {
+  status: boolean;
+  allSlot: {
+    morning: string[];
+    evening: string[];
+  };
+  busySlots: [];
+  isOpen: boolean;
+  isBreak: boolean;
+  message: string;
+}

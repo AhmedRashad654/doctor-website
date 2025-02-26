@@ -140,11 +140,11 @@
   "edit profile": {
     "Full Name": "Full Name",
     "Email": "Email",
-    "Age":"Age",
-    "Mobile":"Mobile",
-    "bio":"bio",
-    "Gender":"Gender",
-    "Country":"Country",
+    "Age": "Age",
+    "Mobile": "Mobile",
+    "bio": "bio",
+    "Gender": "Gender",
+    "Country": "Country",
 
     "Save": "Save"
   },
@@ -158,8 +158,16 @@
     "History": "History",
     "Available Balance": "Available Balance"
   },
-  "history":{
+  "history": {
     "Payment History": "Payment History",
     "label date": "Select Date"
+  },
+  "booking": {
+    "Select Date": "Select Date",
+    "Select Month and Year": "Select Month and Year",
+    "Select Time": "Select Time",
+    "to": "to",
+    "Confirm Booking": "Confirm Booking",
+    "not available":"Doctor not available in this day"
   }
 }
