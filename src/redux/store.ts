@@ -3,6 +3,7 @@ import userSlice from "./features/userSlice";
 import walletUserSlice from "./features/walletUserSlice";
 import walletHistorySlice from "./features/walletHistorySlice";
 import savedDoctorSlice from "./features/savedDoctorsSlice";
+import stepsBookingSlice from "./features/stepsBookingSlice";
 
 export const makeStore = () => {
   return configureStore({
@@ -11,6 +12,7 @@ export const makeStore = () => {
       wallet: walletUserSlice,
       history: walletHistorySlice,
       savedDoctor: savedDoctorSlice,
+      stepsBooking: stepsBookingSlice,
     },
   });
 };

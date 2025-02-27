@@ -1,3 +1,5 @@
+import { Dayjs } from "dayjs";
+
 export interface FakeQuestionType {
   question: string;
   answers: string[];
@@ -155,4 +157,12 @@ export interface IDateDoctor {
   isOpen: boolean;
   isBreak: boolean;
   message: string;
+}
+export interface IStepsBooking {
+  doctor: Doctor;
+  selectedDate: Dayjs | null;
+  selectedTime: string | null;
+  currentDate: Date;
+  availableTime: IDateDoctor;
+  status: "idle" | "loading" | "succeeded" | "failed";
 }

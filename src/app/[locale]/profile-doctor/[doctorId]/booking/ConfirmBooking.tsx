@@ -1,16 +1,16 @@
+import { useAppSelector } from "@/redux/hooks";
 import { Button, Stack } from "@mui/material";
-import { Dayjs } from "dayjs";
 import { useTranslations } from "next-intl";
 import React from "react";
 
-export default function ConfirmBooking({
-  selectedDate,
-  selectedTime,
-}: {
-  selectedDate: Dayjs | null;
-  selectedTime: string | null;
-}) {
+export default function ConfirmBooking() {
   const t = useTranslations("booking");
+  const selectedDate = useAppSelector(
+    (state) => state?.stepsBooking?.selectedDate
+  );
+  const selectedTime = useAppSelector(
+    (state) => state?.stepsBooking?.selectedTime
+  );
   function handleConfirmBooking() {
     if (!selectedDate) return alert("select Date is required");
     if (!selectedTime) return alert("select Time is required");

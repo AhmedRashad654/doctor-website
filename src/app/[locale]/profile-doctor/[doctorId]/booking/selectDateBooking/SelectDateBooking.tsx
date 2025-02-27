@@ -1,25 +1,30 @@
-import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import { useState, useEffect } from "react";
 import { format, startOfMonth, endOfMonth, eachDayOfInterval } from "date-fns";
 import { Tabs, Tab, Box } from "@mui/material";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
 import { useTranslations } from "next-intl";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import {
+  fetchTimeAvailbleDoctor,
+  setCurrentDate,
+  setSelectedDate,
+} from "@/redux/features/stepsBookingSlice";
 
 export default function SelectDateBooking({
-  selectedDate,
-  setSelectedDate,
-  today,
+  doctorId,
 }: {
-  selectedDate: Dayjs | null;
-  setSelectedDate: Dispatch<SetStateAction<Dayjs | null>>;
-  today: Dayjs;
+  doctorId: string | string[] | undefined;
 }) {
   const t = useTranslations("booking");
-
-  const [currentDate, setCurrentDate] = useState(
-    new Date(today.year(), today.month(), 1)
+  const currentDate = useAppSelector(
+    (state) => state?.stepsBooking?.currentDate
   );
+  const selectedDate = useAppSelector(
+    (state) => state?.stepsBooking?.selectedDate
+  );
+  const dispatch = useAppDispatch();
   const [daysInMonth, setDaysInMonth] = useState<Dayjs[]>([]);
   const [tabIndex, setTabIndex] = useState(0);
   useEffect(() => {
@@ -39,8 +44,9 @@ export default function SelectDateBooking({
 
   const handleDateChange = (newValue: Dayjs | null) => {
     if (newValue) {
-      setSelectedDate(newValue);
-      setCurrentDate(new Date(newValue.year(), newValue.month(), 1));
+      dispatch(setSelectedDate(newValue));
+      dispatch(setCurrentDate(newValue.toDate()));
+      dispatch(fetchTimeAvailbleDoctor(doctorId));
     }
   };
 
@@ -105,7 +111,7 @@ export default function SelectDateBooking({
             }
             onClick={() => {
               setTabIndex(index);
-              setSelectedDate(day);
+              dispatch(setSelectedDate(day));
             }}
           />
         ))}
