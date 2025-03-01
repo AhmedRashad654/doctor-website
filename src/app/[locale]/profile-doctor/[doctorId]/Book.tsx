@@ -6,15 +6,18 @@ import { Link, useRouter } from "@/i18n/routing";
 import { Doctor } from "@/constants/Types";
 import { transferAmount } from "@/services/functionShares";
 import { useTranslations } from "next-intl";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setDoctor } from "@/redux/features/stepsBookingSlice";
 export default function Book({ doctor }: { doctor: Doctor }) {
   const t = useTranslations("profileDoctor");
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const doctorRedux = useAppSelector((state) => state?.stepsBooking?.doctor);
   useEffect(() => {
-    dispatch(setDoctor(doctor));
-  }, [dispatch, doctor]);
+    if (!doctorRedux?._id || doctorRedux?._id !== doctor?._id) {
+      dispatch(setDoctor(doctor));
+    }
+  }, [dispatch, doctor, doctorRedux?._id]);
   return (
     <Stack
       alignItems={"center"}

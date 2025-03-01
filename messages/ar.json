@@ -167,6 +167,24 @@
     "Select Time": "اختيار الوقت",
     "to": "الي",
     "Confirm Booking": "تاكيد الحجز",
-    "not available": "الدكتور غير متاح في هذا اليوم"
+    "not available": "الدكتور غير متاح في هذا اليوم",
+    "Appointment Type": "نوع الموعد",
+    "Online": "اونلاين",
+    "At Clinic": "في العيادة",
+    "Explain": "ما هي مشكلتك",
+    "Appointment Schedule": "جدول الموعد",
+    "Date": "التاريخ",
+    "Time": "الوقت",
+    "Type": "النوع",
+    "Payment Amount": "كمية الدفع",
+    "Consulting Fees": "الرسوم المستحقة",
+    "Tax Charges": "رسوم الضرائب",
+    "Payable Amount": "المبلغ المستحق",
+    "Payment Confirm": "تاكيد الدفع",
+    "Do You Want": "هل تريد تاكيد هذا الموعد",
+    "terms": " اذا كنت تريد تاكيد هذا الموعد عليك قبول",
+    "link terms": "  الشروط والاحكام   ",
+    "Pay Now": "ادفع الان",
+    "Cancel": "الغاء"
   }
 }

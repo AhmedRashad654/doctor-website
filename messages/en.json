@@ -168,6 +168,24 @@
     "Select Time": "Select Time",
     "to": "to",
     "Confirm Booking": "Confirm Booking",
-    "not available":"Doctor not available in this day"
+    "not available": "Doctor not available in this day",
+    "Appointment Type": "Appointment Type",
+    "Online": "Online",
+    "At Clinic": "At Clinic",
+    "Explain": "Explain Your Problem",
+    "Appointment Schedule": "Appointment Schedule",
+    "Date": "Date",
+    "Time": "Time",
+    "Type": "Type",
+    "Payment Amount": "Payment Amount",
+    "Consulting Fees": "Consulting Fees",
+    "Tax Charges": "Tax Charges",
+    "Payable Amount": "Payable Amount",
+    "Payment Confirm": "Payment Confirm",
+    "Do You Want": "Do You Want to Confirm this Appointment?",
+    "terms": "if you want to confirm this appointment to be accept",
+    "link terms": "Terms & Condition",
+    "Pay Now": "Pay Now",
+    "Cancel": "Cancel"
   }
 }

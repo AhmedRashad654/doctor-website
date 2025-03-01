@@ -11,14 +11,12 @@ import {
 } from "@stripe/react-stripe-js";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-export default function FormChargeWallet({
-  setOpen,
-}: {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+import { useContextState } from "../../../../context/ContextUseState";
+export default function FormChargeWallet() {
   const stripe = useStripe();
   const elements = useElements();
   const [amount, setAmount] = useState<number>(0);
+  const {setOpen} = useContextState()
   const dispatch = useDispatch<AppDispatch>();
   const [loading, setLoading] = useState<boolean>(false);
   return (

@@ -5,12 +5,9 @@ import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
 import { useTranslations } from "next-intl";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import {
-  fetchTimeAvailbleDoctor,
-  setCurrentDate,
-  setSelectedDate,
-} from "@/redux/features/stepsBookingSlice";
+import { useAppDispatch } from "@/redux/hooks";
+import { fetchTimeAvailbleDoctor } from "@/redux/features/stepsBookingSlice";
+import { useContextState } from "../../../../../../../context/ContextUseState";
 
 export default function SelectDateBooking({
   doctorId,
@@ -18,18 +15,18 @@ export default function SelectDateBooking({
   doctorId: string | string[] | undefined;
 }) {
   const t = useTranslations("booking");
-  const currentDate = useAppSelector(
-    (state) => state?.stepsBooking?.currentDate
-  );
-  const selectedDate = useAppSelector(
-    (state) => state?.stepsBooking?.selectedDate
-  );
+  const {
+    selectedDateBooking,
+    currentDateBooking,
+    setCurrentDateBooking,
+    setSelectedDateBooking,
+  } = useContextState();
   const dispatch = useAppDispatch();
   const [daysInMonth, setDaysInMonth] = useState<Dayjs[]>([]);
   const [tabIndex, setTabIndex] = useState(0);
   useEffect(() => {
-    const startDate = startOfMonth(currentDate);
-    const endDate = endOfMonth(currentDate);
+    const startDate = startOfMonth(currentDateBooking);
+    const endDate = endOfMonth(currentDateBooking);
     const newDaysInMonth = eachDayOfInterval({
       start: startDate,
       end: endDate,
@@ -37,26 +34,33 @@ export default function SelectDateBooking({
 
     setDaysInMonth(newDaysInMonth);
     const newTodayIndex = newDaysInMonth.findIndex((day) =>
-      day.isSame(selectedDate, "day")
+      day.isSame(selectedDateBooking, "day")
     );
     setTabIndex(newTodayIndex !== -1 ? newTodayIndex : 0);
-  }, [currentDate, selectedDate]);
+  }, [currentDateBooking, selectedDateBooking]);
 
   const handleDateChange = (newValue: Dayjs | null) => {
     if (newValue) {
-      dispatch(setSelectedDate(newValue));
-      dispatch(setCurrentDate(newValue.toDate()));
-      dispatch(fetchTimeAvailbleDoctor(doctorId));
+      setSelectedDateBooking(newValue);
+      setCurrentDateBooking(new Date(newValue.year(), newValue.month(), 1));
     }
   };
 
+  useEffect(() => {
+    dispatch(
+      fetchTimeAvailbleDoctor({
+        doctorId: doctorId,
+        selectedDateBooking: selectedDateBooking,
+      })
+    );
+  }, [dispatch, doctorId, selectedDateBooking]);
   return (
     <Box sx={{ maxWidth: "100%", borderRadius: 2, paddingY: 2, mt: 2 }}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
           views={["year", "month"]}
           label={t("Select Month and Year")}
-          value={selectedDate}
+          value={selectedDateBooking}
           onChange={handleDateChange}
           sx={{ width: { md: "250px", xs: "100%" }, mb: 2 }}
         />
@@ -111,7 +115,7 @@ export default function SelectDateBooking({
             }
             onClick={() => {
               setTabIndex(index);
-              dispatch(setSelectedDate(day));
+              setSelectedDateBooking(day);
             }}
           />
         ))}

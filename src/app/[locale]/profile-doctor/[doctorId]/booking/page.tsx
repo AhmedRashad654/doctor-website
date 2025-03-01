@@ -10,19 +10,23 @@ import { useTranslations } from "next-intl";
 import TimeSelector from "./selectDateBooking/TimeSelector";
 import ConfirmBooking from "./ConfirmBooking";
 import { useAppSelector } from "@/redux/hooks";
+import AppointmentType from "./AppointmentType";
+import ExplainYourProblem from "./ExplainYourProblem";
 
 export default function Booking() {
   const profileDoctor = useAppSelector((state) => state?.stepsBooking?.doctor);
   const t = useTranslations("booking");
   const { doctorId } = useParams();
   const router = useRouter();
+
   // check profile doctor availbale
   useEffect(() => {
-    if (!profileDoctor) {
+    if (!profileDoctor?._id) {
       router.push(`/profile-doctor/${doctorId}`);
     }
   }, [doctorId, profileDoctor, router]);
-
+  
+  if (!profileDoctor?._id) return;
   return (
     <Box>
       <HeaderDetailsDoctor image={profileDoctor.image} />
@@ -40,6 +44,8 @@ export default function Booking() {
           {t("Select Time")}
         </Typography>
         <TimeSelector />
+        <AppointmentType />
+        <ExplainYourProblem />
         <ConfirmBooking />
       </Container>
     </Box>

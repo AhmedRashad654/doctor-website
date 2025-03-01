@@ -1,13 +1,14 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import ModelAddCreditCard from "./ModelAddCreditCard";
 import { Button, Stack } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
+import { useContextState } from "../../../../context/ContextUseState";
 
 export default function ButtonAddMonyAndHistory() {
   const t = useTranslations("my-wallet");
-  const [open, setOpen] = useState(false);
+  const {open,setOpen} = useContextState()
   const router = useRouter()
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   useEffect(() => {
@@ -55,7 +56,7 @@ export default function ButtonAddMonyAndHistory() {
           {t("History")}
         </Button>
       </Stack>
-      <ModelAddCreditCard open={open} setOpen={setOpen} />
+      <ModelAddCreditCard  />
     </>
   );
 }

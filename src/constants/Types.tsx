@@ -1,5 +1,3 @@
-import { Dayjs } from "dayjs";
-
 export interface FakeQuestionType {
   question: string;
   answers: string[];
@@ -92,7 +90,7 @@ export interface Doctor {
   wallet: number;
   totalWallet: number;
   patients: number;
-  service: [];
+  service: IServices[];
   charge: number;
   commission: number;
   designation: string;
@@ -158,11 +156,18 @@ export interface IDateDoctor {
   isBreak: boolean;
   message: string;
 }
+export interface IResponseGetTax {
+  data: { tax: number; taxPercent: number; finalAmount: number };
+  message: string;
+  status: boolean;
+}
 export interface IStepsBooking {
   doctor: Doctor;
-  selectedDate: Dayjs | null;
   selectedTime: string | null;
-  currentDate: Date;
+  selectAppointmentType: number | null;
+  explainYourProblem: string | null;
   availableTime: IDateDoctor;
+  statusCheckSlotAndWallet: boolean;
+  tax: IResponseGetTax;
   status: "idle" | "loading" | "succeeded" | "failed";
 }

@@ -9,7 +9,7 @@ import notFound from "../../../../public/assets/images/notFound.png";
 
 export default function DisplaySavedDoctor() {
   const savedDoctor = useAppSelector((state) => state.savedDoctor);
-  if (savedDoctor?.status === "loading") return <LoadingSkeleton height={70} width={"100%"}/>;
+  if (savedDoctor?.status === "loading") return <LoadingSkeleton height={70} width={"100%"} text="column"/>;
   if (savedDoctor?.status === "succeeded" && savedDoctor?.data?.length === 0)
     return <NotFoundData image={notFound} />;
   return (

@@ -1,9 +1,13 @@
 import { request } from "@/axios/axios";
-import { Doctor, IDateDoctor, IStepsBooking } from "@/constants/Types";
+import {
+  Doctor,
+  IDateDoctor,
+  IResponseGetTax,
+  IStepsBooking,
+} from "@/constants/Types";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 
-const today = dayjs();
 const emptyDoctor: Doctor = {
   _id: "",
   uniqueId: 0,
@@ -56,6 +60,7 @@ const emptyDoctor: Doctor = {
   updatedAt: "",
   isSaved: false,
 };
+
 const emptyAvailableTime: IDateDoctor = {
   status: false,
   allSlot: {
@@ -67,29 +72,57 @@ const emptyAvailableTime: IDateDoctor = {
   isBreak: false,
   message: "",
 };
+const emptyTax: IResponseGetTax = {
+  data: { tax: 0, taxPercent: 0, finalAmount: 0 },
+  message: "",
+  status: false,
+};
 const initialState: IStepsBooking = {
   doctor: emptyDoctor,
-  selectedDate: today,
   selectedTime: null,
-  currentDate: new Date(today.year(), today.month(), 1),
+  selectAppointmentType: null,
+  explainYourProblem: null,
   availableTime: emptyAvailableTime,
+  statusCheckSlotAndWallet: false,
+  tax: emptyTax,
   status: "idle",
 };
 
 export const fetchTimeAvailbleDoctor = createAsyncThunk(
   "user/fetchTimeAvailbleDoctor",
-  async (doctorId: string | string[] | undefined, thunkAPI) => {
+  async (
+    {
+      doctorId,
+      selectedDateBooking,
+    }: {
+      doctorId: string | string[] | undefined;
+      selectedDateBooking: Dayjs | null;
+    },
+    thunkAPI
+  ) => {
     try {
       const response = await request.get(
-        `/user/appointment/checkDate?doctorId=${doctorId}&date=${initialState.selectedDate}`
+        `/user/appointment/checkDate?doctorId=${doctorId}&date=${selectedDateBooking}`
       );
-      return response.data?.data;
+      return response.data;
     } catch {
       return thunkAPI.rejectWithValue("Failed to fetch available time");
     }
   }
 );
-
+export const fetchTax = createAsyncThunk(
+  "user/fetchTax",
+  async (amount: number, thunkAPI) => {
+    try {
+      const response = await request.get(
+        `/user/appointment/getTax?amount=${amount}`
+      );
+      return response.data;
+    } catch {
+      return thunkAPI.rejectWithValue("Failed to fetch tax");
+    }
+  }
+);
 export const stepsBookingSlice = createSlice({
   name: "stepsBooking",
   initialState,
@@ -97,15 +130,20 @@ export const stepsBookingSlice = createSlice({
     setDoctor: (state, action: PayloadAction<Doctor>) => {
       state.doctor = action.payload;
     },
-    setCurrentDate: (state, action: PayloadAction<Date>) => {
-      const newDate = dayjs(action.payload);
-      state.currentDate = new Date(newDate.year(), newDate.month(), 1);
-    },
-    setSelectedDate: (state, action: PayloadAction<Dayjs | null>) => {
-      state.selectedDate = action.payload;
-    },
     setSelectedTime: (state, action: PayloadAction<string | null>) => {
       state.selectedTime = action.payload;
+    },
+    setExplainYourProblem: (state, action: PayloadAction<string | null>) => {
+      state.explainYourProblem = action.payload;
+    },
+    setSelectAppointmentType: (state, action: PayloadAction<number | null>) => {
+      state.selectAppointmentType = action.payload;
+    },
+    setStatusCheckSlotAndAmount: (state, action: PayloadAction<boolean>) => {
+      state.statusCheckSlotAndWallet = action.payload;
+    },
+    setInitialState: () => {
+      return { ...initialState };
     },
   },
   extraReducers: (builder) => {
@@ -122,10 +160,21 @@ export const stepsBookingSlice = createSlice({
       .addCase(fetchTimeAvailbleDoctor.rejected, (state) => {
         state.status = "failed";
         return initialState;
+      })
+      .addCase(fetchTax.fulfilled, (state, action) => {
+        if (action.payload) {
+          state.tax = action.payload;
+        }
       });
   },
 });
 
-export const { setDoctor, setCurrentDate, setSelectedDate, setSelectedTime } =
-  stepsBookingSlice.actions;
+export const {
+  setDoctor,
+  setSelectedTime,
+  setSelectAppointmentType,
+  setExplainYourProblem,
+  setStatusCheckSlotAndAmount,
+  setInitialState,
+} = stepsBookingSlice.actions;
 export default stepsBookingSlice.reducer;

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { Link } from "@/i18n/routing";
 import { Stack } from "@mui/material";
@@ -10,7 +10,7 @@ export default function LoginAndRegister() {
       direction={"row"}
       gap={"15px"}
       sx={{
-        display: { xs: "none", md: "flex" },
+        display: "flex",
         color: "primary.main",
         fontWeight: "bold",
       }}
