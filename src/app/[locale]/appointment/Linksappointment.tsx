@@ -11,19 +11,19 @@ export default async function Linksappointment({
   const t = await getTranslations("appointment");
   const links = [
     {
-      path: "/appointment?category=approve",
-      name: "Approve Appointment",
-      active: "approve",
+      path: "/appointment?category=pending",
+      name: "Pending Appointment",
+      active: "pending",
     },
     {
-      path: "/appointment?category=pendding",
-      name: "Pendding Appointment",
-      active: "pendding",
+      path: "/appointment?category=cancalled",
+      name: "Cancalled Appointment",
+      active: "cancalled",
     },
     {
-      path: "/appointment?category=cancelled",
-      name: "Cancelled Appointment",
-      active: "cancelled",
+      path: "/appointment?category=completed",
+      name: "Completed Appointment",
+      active: "completed",
     },
   ];
   return (
@@ -42,7 +42,7 @@ export default async function Linksappointment({
           href={item.path}
           scroll={false}
           key={item.path}
-          className={` ${
+          className={` font-semibold w-[240px] ${
             valueSearch === item.active ? "link-active2" : "not-active"
           }`}
         >

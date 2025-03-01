@@ -108,9 +108,9 @@
   },
   "appointment": {
     "main": "المواعيد",
-    "Pendding Appointment": "المواعيد المنتظرة",
-    "Cancelled Appointment": "المواعيد الملغية",
-    "Approve Appointment": "المواعيد المقبولة"
+    "Pending Appointment": "المواعيد المنتظرة",
+    "Cancalled Appointment": "المواعيد الملغية",
+    "Completed Appointment": "المواعيد المكتملة"
   },
   "quizzes": {
     "Quizzes": "الاسئلة",

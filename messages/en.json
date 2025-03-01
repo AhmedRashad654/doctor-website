@@ -108,9 +108,9 @@
   },
   "appointment": {
     "main": "appointment",
-    "Pendding Appointment": "Pendding Appointment",
-    "Cancelled Appointment": "Cancelled Appointment",
-    "Approve Appointment": "Approve Appointment"
+    "Pending Appointment": "Pending Appointment",
+    "Cancalled Appointment": "Cancalled Appointment",
+    "Completed Appointment": "Completed Appointment"
   },
   "quizzes": {
     "Quizzes": "Quizzes",

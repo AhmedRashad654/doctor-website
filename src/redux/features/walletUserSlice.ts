@@ -26,6 +26,9 @@ export const walletUserSlice = createSlice({
     setWallet: (state, action: PayloadAction<walletUser>) => {
       state.amount = action.payload.amount;
     },
+    decreaseWallet: (state, action: PayloadAction<number>) => {
+      state.amount -= action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -40,5 +43,5 @@ export const walletUserSlice = createSlice({
   },
 });
 
-export const { setWallet } = walletUserSlice.actions;
+export const { setWallet, decreaseWallet } = walletUserSlice.actions;
 export default walletUserSlice.reducer;

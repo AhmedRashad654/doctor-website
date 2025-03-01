@@ -9,6 +9,8 @@ import { useTranslations } from "next-intl";
 import { bookAppointment } from "@/services/api/booking";
 import { useContextState } from "../../../../../../../context/ContextUseState";
 import useShowText from "@/components/Shared/useShowText";
+import { decreaseWallet } from "@/redux/features/walletUserSlice";
+import { addWalletHistory } from "@/redux/features/walletHistorySlice";
 
 export default function ModalConfirmBay() {
   const bookingState = useAppSelector((state) => state?.stepsBooking);
@@ -27,7 +29,16 @@ export default function ModalConfirmBay() {
     handleClose();
     showText(response?.message);
     if (response?.message === "appointment send successfully!!") {
-      router.push("/appointment");
+      dispatch(decreaseWallet(bookingState?.tax?.data?.finalAmount));
+      dispatch(
+        addWalletHistory({
+          _id: "123",
+          appointment: { _id: "4444" },
+          amount: bookingState?.tax?.data?.finalAmount,
+          createdAt: response?.data?.createdAt,
+        })
+      );
+      router.replace("/appointment");
     }
   }
   return (

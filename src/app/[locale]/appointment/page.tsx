@@ -1,7 +1,9 @@
 import { Container } from "@mui/material";
 import React from "react";
 import Linksappointment from "./Linksappointment";
-import Appointments from "./Appointments";
+import AppointmentPending from "./Appointments/AppointmentPending";
+import AppointmentCanceled from "./Appointments/AppointmentCanceled";
+import AppointmentCompleted from "./Appointments/AppointmentCompleted";
 
 export default async function Appointment({
   searchParams,
@@ -13,7 +15,15 @@ export default async function Appointment({
   return (
     <Container sx={{ paddingY: "30px" }}>
       <Linksappointment valueSearch={valueSearch} />
-      <Appointments />
+      {valueSearch === "pending" ? (
+        <AppointmentPending  />
+      ) : valueSearch === "cancalled" ? (
+        <AppointmentCanceled  />
+      ) : valueSearch === "completed" ? (
+        <AppointmentCompleted  />
+      ) : (
+        ""
+      )}
     </Container>
   );
 }

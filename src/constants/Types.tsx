@@ -131,19 +131,20 @@ export interface walletUser {
   amount: number;
 }
 export interface IWalletHistory {
-  _id: string;
-  user: string;
-  wallet: string;
-  amount: number;
-  date: string;
-  paymentGateway: number;
-  type: number;
-  couponId: string;
-  uniqueId: string;
-  time: string;
-  createdAt: string;
-  updatedAt: string;
-  month: string;
+  _id?: string;
+  user?: string;
+  wallet?: string;
+  amount?: number;
+  date?: string;
+  paymentGateway?: number;
+  appointment?: { _id: string };
+  type?: number;
+  couponId?: string;
+  uniqueId?: string;
+  time?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  month?: string;
 }
 export interface IDateDoctor {
   status: boolean;
@@ -170,4 +171,32 @@ export interface IStepsBooking {
   statusCheckSlotAndWallet: boolean;
   tax: IResponseGetTax;
   status: "idle" | "loading" | "succeeded" | "failed";
+}
+export interface IAppointment {
+  _id: string;
+  user: {
+    _id: string;
+    name: string;
+    image: string;
+  };
+  doctor: {
+    _id: string;
+    name: string;
+    image: string;
+    designation: string;
+    degree: string[];
+  };
+  service: string;
+  time: string;
+  status: number;
+  appointmentId: string;
+  date: string;
+  isReviewed: boolean;
+  type: number;
+  amount: number;
+  withoutTax: number;
+  adminEarning: number;
+  doctorEarning: number;
+  createdAt: string;
+  updatedAt: string;
 }

@@ -54,11 +54,13 @@ export default function DisplayCardsHistory() {
               </Box>
               <Stack direction={"column"}>
                 <Typography variant="h6" sx={{ color: "#0ECD2A" }}>
-                  Add Wallet
+                  {item?.appointment?._id
+                    ? "booking Appointment"
+                    : "Add Wallet"}
                 </Typography>
-                <Typography variant="body1" sx={{ color: "#777" }}>
+                {/* <Typography variant="body1" sx={{ color: "#777" }}>
                   #{item?.uniqueId}
-                </Typography>
+                </Typography> */}
                 <Typography variant="body1" sx={{ color: "#777" }}>
                   {dayjs(item?.createdAt).format("DD/MM/YYYY hh:mm A")}
                 </Typography>
@@ -78,7 +80,7 @@ export default function DisplayCardsHistory() {
                 fontSize: "20px",
               }}
             >
-              + {item?.amount}
+              {item?.type === 1 ? "+" : "-"} {item?.amount}
             </Stack>
           </Stack>
         ))}

@@ -4,7 +4,7 @@ import walletUserSlice from "./features/walletUserSlice";
 import walletHistorySlice from "./features/walletHistorySlice";
 import savedDoctorSlice from "./features/savedDoctorsSlice";
 import stepsBookingSlice from "./features/stepsBookingSlice";
-
+import appointmentPendinSlice from './features/appointment/appointmentPendingSlice'
 export const makeStore = () => {
   return configureStore({
     reducer: {
@@ -13,6 +13,7 @@ export const makeStore = () => {
       history: walletHistorySlice,
       savedDoctor: savedDoctorSlice,
       stepsBooking: stepsBookingSlice,
+      appointmentPending:appointmentPendinSlice
     },
   });
 };

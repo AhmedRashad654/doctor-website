@@ -22,10 +22,10 @@ export default function Booking() {
   // check profile doctor availbale
   useEffect(() => {
     if (!profileDoctor?._id) {
-      router.push(`/profile-doctor/${doctorId}`);
+      router.replace(`/profile-doctor/${doctorId}`);
     }
   }, [doctorId, profileDoctor, router]);
-  
+
   if (!profileDoctor?._id) return;
   return (
     <Box>

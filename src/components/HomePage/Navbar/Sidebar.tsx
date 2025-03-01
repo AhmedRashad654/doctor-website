@@ -107,7 +107,7 @@ export default function Sidebar() {
               <ListItemText primary={t("Save Doctor")} />
             </ListItemButton>
           </Link>
-          <Link href={`/appointment?category=approve`}>
+          <Link href={`/appointment?category=pending`}>
             <ListItemButton>
               <ListItemIcon>
                 <Event />
