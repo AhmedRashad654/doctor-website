@@ -5,7 +5,7 @@ export const navbarLinks = [
   { name: "Home", path: "/" },
   {
     name: "Appointment",
-    path: "/appointment?category=approve",
+    path: "/appointment?category=pending",
     active: "/appointment",
   },
   { name: "Quizzes", path: "/quizzes" },
