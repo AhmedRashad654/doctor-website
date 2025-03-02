@@ -1,14 +1,17 @@
+"use client";
 import { Link } from "@/i18n/routing";
+import { setInitialState } from "@/redux/features/stepsBookingSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import { Stack } from "@mui/material";
-import { getTranslations } from "next-intl/server";
-import React from "react";
+import { useTranslations } from "next-intl";
+import React, { useEffect } from "react";
 
-export default async function Linksappointment({
+export default function Linksappointment({
   valueSearch,
 }: {
   valueSearch: string;
 }) {
-  const t = await getTranslations("appointment");
+  const t = useTranslations("appointment");
   const links = [
     {
       path: "/appointment?category=pending",
@@ -26,6 +29,10 @@ export default async function Linksappointment({
       active: "completed",
     },
   ];
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(setInitialState());
+  }, [dispatch]);
   return (
     <Stack
       sx={{

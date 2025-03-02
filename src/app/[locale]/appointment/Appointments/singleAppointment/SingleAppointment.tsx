@@ -1,9 +1,18 @@
 import { IAppointment } from "@/constants/Types";
 import { Stack, Typography } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import DateRangeIcon from "@mui/icons-material/DateRange";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import { format } from "date-fns";
+import FooterAppointmentPending from "./FooterAppointmentPending";
+import FooterAppointmentCanceled from "./FooterAppointmentCanceled";
+import FooterAppointmentCompleted from "./FooterAppointmentCompleted";
+import ModelCancelAppointment from "./ModelCancelAppointment";
 
 export default function SingleAppointment({ item }: { item: IAppointment }) {
+  const [openCancelAppointment, setOpenCancelAppointment] =
+    useState<boolean>(false);
   return (
     <Stack
       gap="15px"
@@ -13,7 +22,7 @@ export default function SingleAppointment({ item }: { item: IAppointment }) {
         <Image
           src={item?.doctor?.image}
           alt={"doctor"}
-          width={130}
+          width={100}
           height={150}
           className=" rounded-[10px]"
         />
@@ -34,17 +43,34 @@ export default function SingleAppointment({ item }: { item: IAppointment }) {
           </Stack>
         </Stack>
       </Stack>
-      <Stack direction={"row"} alignItems={"center"} gap={"10px"}>
+      <Stack direction={"row"} alignItems={"center"} gap={"20px"} color="#777">
         <Stack direction={"row"} gap={"5px"} alignItems={"center"}>
-          <Typography>hello</Typography>
+          <DateRangeIcon />
+          <Typography>
+            {item?.date ? format(item?.date.toString(), "d MMM yyyy") : null}
+          </Typography>
         </Stack>
         <Stack direction={"row"} gap={"5px"} alignItems={"center"}>
-          <Typography>hello</Typography>
-        </Stack>
-        <Stack direction={"row"} gap={"5px"} alignItems={"center"}>
-          <Typography>hello</Typography>
+          <AccessTimeIcon />
+          <Typography>{item?.time}</Typography>
         </Stack>
       </Stack>
+      {item?.status === 1 ? (
+        <FooterAppointmentPending
+          setOpenCancelAppointment={setOpenCancelAppointment}
+        />
+      ) : item?.status === 4 ? (
+        <FooterAppointmentCanceled />
+      ) : item?.status === 3 ? (
+        <FooterAppointmentCompleted />
+      ) : (
+        ""
+      )}
+      <ModelCancelAppointment
+        appointmentId={item?._id}
+        openCancelAppointment={openCancelAppointment}
+        setOpenCancelAppointment={setOpenCancelAppointment}
+      />
     </Stack>
   );
 }

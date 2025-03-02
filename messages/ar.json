@@ -110,7 +110,14 @@
     "main": "المواعيد",
     "Pending Appointment": "المواعيد المنتظرة",
     "Cancalled Appointment": "المواعيد الملغية",
-    "Completed Appointment": "المواعيد المكتملة"
+    "Completed Appointment": "المواعيد المكتملة",
+    "cancel appointment": "الغاء الموعد",
+    "this cancel": "هذا الموعد تم الغاءة",
+    "this complete": "هذا الموعد تم انهاؤة",
+    "Do You Want": "هل تريد الغاء هذا الموعد",
+    "terms": " اذا كنت تريد تاكيد هذا الموعد عليك قبول",
+    "link terms": "  الشروط والاحكام   ",
+    "Cancel": "الغاء"
   },
   "quizzes": {
     "Quizzes": "الاسئلة",

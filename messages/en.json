@@ -110,7 +110,14 @@
     "main": "appointment",
     "Pending Appointment": "Pending Appointment",
     "Cancalled Appointment": "Cancalled Appointment",
-    "Completed Appointment": "Completed Appointment"
+    "Completed Appointment": "Completed Appointment",
+    "cancel appointment": "Cancel Appointment",
+    "this cancel": "This appointment is cancelled",
+    "this complete": "This appointment is completed",
+    "Do You Want": "Do You Want to Cancel this Appointment?",
+    "terms": "if you want to confirm this appointment to be accept",
+    "link terms": "Terms & Condition",
+    "Cancel": "Cancel"
   },
   "quizzes": {
     "Quizzes": "Quizzes",

@@ -14,6 +14,7 @@ import { ContextProvider } from "../../../context/ContextUseState";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import StoreProvider from "./StoreProvider";
 import ClientLayout from "./ClientLayout";
+import ReactQueryProvider from "./ReactQueryProvider";
 
 export const metadata = {
   title: "clears mind",
@@ -49,7 +50,7 @@ export default async function LocaleLayout({
                       <NavbarVisibility>
                         <Navbar locale={locale} />
                       </NavbarVisibility>
-                      {children}
+                      <ReactQueryProvider>{children}</ReactQueryProvider>
                       <FooterVisibility>
                         <Footer />
                       </FooterVisibility>

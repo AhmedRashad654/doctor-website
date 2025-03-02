@@ -174,29 +174,29 @@ export interface IStepsBooking {
 }
 export interface IAppointment {
   _id: string;
-  user: {
+  user?: {
     _id: string;
     name: string;
     image: string;
   };
   doctor: {
-    _id: string;
-    name: string;
+    _id?: string;
+    name?: string;
     image: string;
-    designation: string;
-    degree: string[];
+    designation?: string;
+    degree?: string[];
   };
-  service: string;
+  service?: string;
   time: string;
   status: number;
-  appointmentId: string;
+  appointmentId?: string;
   date: string;
-  isReviewed: boolean;
+  isReviewed?: boolean;
   type: number;
-  amount: number;
-  withoutTax: number;
-  adminEarning: number;
-  doctorEarning: number;
-  createdAt: string;
-  updatedAt: string;
+  amount?: number;
+  withoutTax?: number;
+  adminEarning?: number;
+  doctorEarning?: number;
+  createdAt?: string;
+  updatedAt?: string;
 }

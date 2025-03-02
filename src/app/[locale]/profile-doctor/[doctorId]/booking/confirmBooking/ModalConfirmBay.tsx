@@ -38,7 +38,7 @@ export default function ModalConfirmBay() {
           createdAt: response?.data?.createdAt,
         })
       );
-      router.replace("/appointment");
+      router.replace("/appointment?category=pending");
     }
   }
   return (
