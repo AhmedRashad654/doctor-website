@@ -13,14 +13,15 @@ import { FormDataEditProfile } from "@/constants/Types";
 export const loginWithGoogle = async (
   creaditialResponse: CredentialResponse,
   dispatch: Dispatch,
-  router: AppRouterInstance
+  router: AppRouterInstance,
+  fcmToken: string | null
 ) => {
   if (creaditialResponse.credential) {
     const decode: { email: string } = jwtDecode(creaditialResponse.credential);
 
     const result = await request.post("/user/loginSignup", {
       loginType: 2,
-      fcmToken: "tokendefault123",
+      fcmToken: fcmToken,
       email: decode.email,
     });
 

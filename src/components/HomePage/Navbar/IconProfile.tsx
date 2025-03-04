@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import CircleNotificationsIcon from "@mui/icons-material/CircleNotifications";
+// import CircleNotificationsIcon from "@mui/icons-material/CircleNotifications";
 import { Box, Drawer, IconButton } from "@mui/material";
 import Sidebar from "./Sidebar";
 import LoginAndRegister from "./LoginAndRegister";
@@ -15,9 +15,9 @@ export default function IconProfile() {
       <IconButton onClick={() => setOpen(true)} sx={{ p: 0 }}>
         <AccountCircleIcon fontSize="large" color="primary" />
       </IconButton>
-      <IconButton sx={{ p: 0 }}>
+      {/* <IconButton sx={{ p: 0 }}>
         <CircleNotificationsIcon fontSize="large" color="primary" />
-      </IconButton>
+      </IconButton> */}
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
         <Sidebar />
       </Drawer>
