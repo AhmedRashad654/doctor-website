@@ -1,6 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import React from "react";
-import question from "../../../../public/assets/images/quizzes.png";
+import question from "../../../../../public/assets/images/quizzes.png";
 import Image from "next/image";
 export default function Question({ Question }: { Question: string|undefined }) {
   return (

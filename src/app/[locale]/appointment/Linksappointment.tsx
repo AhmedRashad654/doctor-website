@@ -1,10 +1,8 @@
 "use client";
 import { Link } from "@/i18n/routing";
-import { setInitialState } from "@/redux/features/stepsBookingSlice";
-import { useAppDispatch } from "@/redux/hooks";
 import { Stack } from "@mui/material";
 import { useTranslations } from "next-intl";
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function Linksappointment({
   valueSearch,
@@ -29,10 +27,6 @@ export default function Linksappointment({
       active: "completed",
     },
   ];
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(setInitialState());
-  }, [dispatch]);
   return (
     <Stack
       sx={{

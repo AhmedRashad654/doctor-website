@@ -10,11 +10,8 @@ import {
 } from "react";
 
 interface ContextType {
-  numberQuestion: number;
-  setNumberQuestion: Dispatch<SetStateAction<number>>;
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
-
   selectedDate: Dayjs;
   setSelectedDate: Dispatch<SetStateAction<Dayjs>>;
   selectedDateBooking: Dayjs | null;
@@ -24,7 +21,6 @@ interface ContextType {
 }
 const ContextUseState = createContext<ContextType | undefined>(undefined);
 function ContextProvider({ children }: { children: ReactNode }) {
-  const [numberQuestion, setNumberQuestion] = useState<number>(1);
   const [open, setOpen] = useState<boolean>(false);
 
   const today = dayjs();
@@ -42,8 +38,6 @@ function ContextProvider({ children }: { children: ReactNode }) {
       value={{
         open,
         setOpen,
-        numberQuestion,
-        setNumberQuestion,
         selectedDate,
         setSelectedDate,
         selectedDateBooking,

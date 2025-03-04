@@ -3,34 +3,27 @@ import { Stack } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import success from "../../../../public/assets/images/success.png";
+import success from "../../../../../public/assets/images/success.png";
+import { Dispatch, SetStateAction } from "react";
 export default function FinishQuizzes({
   showFinishQuizzes,
+  setShowFinishQuizzes,
 }: {
   showFinishQuizzes: boolean;
-  }) {
-  
-  const [open, setOpen] = useState(false);
+  setShowFinishQuizzes: Dispatch<SetStateAction<boolean>>;
+}) {
   const t = useTranslations("quizzes");
 
   const router = useRouter();
-  const handleOpen = () => {
-    setOpen(true);
-  };
   const handleClose = () => {
-    setOpen(false);
+    setShowFinishQuizzes(false);
     router.push("/");
   };
-  useEffect(() => {
-    if (showFinishQuizzes) {
-      handleOpen();
-    }
-  }, [showFinishQuizzes]);
+
   if (!showFinishQuizzes) return;
   return (
-    <Modal keepMounted open={open} onClose={handleClose}>
+    <Modal keepMounted open={showFinishQuizzes} onClose={handleClose}>
       <Stack
         alignItems={"center"}
         sx={{
@@ -48,7 +41,7 @@ export default function FinishQuizzes({
         <Image
           src={success}
           alt={"success"}
-        className="w-[70px] h-[70px] mb-3"
+          className="w-[70px] h-[70px] mb-3"
         />
         <Typography variant="h4" sx={{ color: "primary.main" }}>
           {t("cangratulations")}

@@ -5,7 +5,6 @@ import { Stripe, StripeElements } from "@stripe/stripe-js";
 import { CardNumberElementComponent } from "@stripe/react-stripe-js";
 import { setWallet } from "@/redux/features/walletUserSlice";
 import { Dispatch as DispatchRedux } from "@reduxjs/toolkit";
-import { addWalletHistory } from "@/redux/features/walletHistorySlice";
 /*
  * add money in wallet part api
  */
@@ -61,7 +60,6 @@ export const handleSubmitWallet = async (
         alert("Payment success");
         setOpen(false);
         dispatch(setWallet(response?.data));
-        dispatch(addWalletHistory(response?.history));
       } else {
         alert("Payment failed");
       }
