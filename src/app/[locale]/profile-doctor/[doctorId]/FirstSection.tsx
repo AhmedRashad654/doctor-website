@@ -5,10 +5,12 @@ export default function FirstSection({
   name,
   degree,
   address,
+  designation,
 }: {
   name: string;
   degree: string[];
   address: string;
+  designation: string;
 }) {
   return (
     <Stack
@@ -39,7 +41,7 @@ export default function FirstSection({
           marginTop: { md: "7px" },
         }}
       >
-        Prediction
+        {designation}
       </Box>
     </Stack>
   );

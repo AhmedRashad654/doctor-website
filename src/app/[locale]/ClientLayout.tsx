@@ -1,7 +1,6 @@
 "use client";
 import { useEffect } from "react";
 import { fetchUser } from "@/redux/features/userSlice";
-import { fetchWalletUser } from "@/redux/features/walletUserSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { fetchSavedDoctor } from "@/redux/features/savedDoctorsSlice";
 import Cookies from "js-cookie";
@@ -16,7 +15,6 @@ export default function ClientLayout({
   useEffect(() => {
     if (userId) {
       dispatch(fetchUser());
-      dispatch(fetchWalletUser());
       dispatch(fetchSavedDoctor());
     }
   }, [dispatch, user?._id, userId]);

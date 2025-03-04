@@ -37,6 +37,7 @@ export default async function DetailsDoctor({
           name={profile?.name}
           degree={profile.degree}
           address={profile.address}
+          designation={profile.designation}
         />
         <SecondSection profile={profile} />
         <LinksProfileDoctor valueSearch={valueSearch} doctorId={doctorId} />

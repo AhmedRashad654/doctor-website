@@ -3,8 +3,17 @@ import Cookies from "js-cookie";
 import { FormEvent, Dispatch, SetStateAction } from "react";
 import { Stripe, StripeElements } from "@stripe/stripe-js";
 import { CardNumberElementComponent } from "@stripe/react-stripe-js";
-import { setWallet } from "@/redux/features/walletUserSlice";
-import { Dispatch as DispatchRedux } from "@reduxjs/toolkit";
+import { QueryClient } from "@tanstack/react-query";
+import { Dayjs } from "dayjs";
+
+/*
+ * get Money Walley
+ */
+export const getMoneyWallet = async () => {
+  const userId = Cookies.get("userId_Doctor");
+  const response = await request.get(`/user/wallet?userId=${userId}`);
+  return response.data?.data;
+};
 /*
  * add money in wallet part api
  */
@@ -31,7 +40,7 @@ export const handleSubmitWallet = async (
   amount: number,
   setOpen: Dispatch<SetStateAction<boolean>>,
   setLoading: Dispatch<SetStateAction<boolean>>,
-  dispatch: DispatchRedux
+  queryClient: QueryClient
 ) => {
   e.preventDefault();
   if (!stripe || !elements) {
@@ -59,7 +68,7 @@ export const handleSubmitWallet = async (
       if (response) {
         alert("Payment success");
         setOpen(false);
-        dispatch(setWallet(response?.data));
+        queryClient.invalidateQueries({ queryKey: ["getMoneyWallet"] });
       } else {
         alert("Payment failed");
       }
@@ -70,3 +79,13 @@ export const handleSubmitWallet = async (
     setLoading(false);
   }
 };
+/*
+ * getWalletHistory
+ */
+export async function getWalletHistory(userId: string, selectedDate: Dayjs) {
+  return await request.get(
+    `/user/wallet/getWalletHistory?userId=${userId}&month=${selectedDate.format(
+      "YYYY-MM"
+    )}`
+  );
+}

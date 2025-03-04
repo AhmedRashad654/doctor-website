@@ -43,7 +43,9 @@ export default function Book({ doctor }: { doctor: Doctor }) {
       >
         {t("Book Now")} :{transferAmount(doctor?.charge)}
       </Button>
-      <Link href={`/chat/${doctor?._id}`}>
+      <Link
+        href={`/chat/${doctor?._id}?name=${doctor?.name}&designation=${doctor?.designation}&image=${doctor?.image}`}
+      >
         <IconButton>
           <ChatIcon sx={{ fontSize: "40px", color: "primary.main" }} />
         </IconButton>

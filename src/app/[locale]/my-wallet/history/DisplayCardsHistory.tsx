@@ -9,23 +9,16 @@ import NotFoundData from "@/components/Shared/NotFoundData";
 import notFound from "../../../../../public/assets/images/notFound.png";
 import LoadingSkeleton from "@/components/Shared/LoadingSkeleton";
 import { useContextState } from "../../../../../context/ContextUseState";
-import { request } from "@/axios/axios";
 import { useQuery } from "@tanstack/react-query";
+import { getWalletHistory } from "@/services/api/wallet/wallet";
 
 export default function DisplayCardsHistory() {
   const { selectedDate } = useContextState();
   const userId = useAppSelector((state) => state?.user?._id);
   // get history
-  async function getWalletHistory() {
-    return await request.get(
-      `/user/wallet/getWalletHistory?userId=${userId}&month=${selectedDate.format(
-        "YYYY-MM"
-      )}`
-    );
-  }
   const { data, isLoading } = useQuery({
     queryKey: ["getWalletHistory", selectedDate, userId],
-    queryFn: () => getWalletHistory(),
+    queryFn: () => getWalletHistory(userId, selectedDate),
     enabled: !!userId,
   });
   if (isLoading)

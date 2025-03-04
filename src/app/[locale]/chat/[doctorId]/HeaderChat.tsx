@@ -7,8 +7,11 @@ import {
   Typography,
 } from "@mui/material";
 import VideocamIcon from "@mui/icons-material/Videocam";
+import { useSearchParams } from "next/navigation";
 
 export default function HeaderChat() {
+  const searchParams = useSearchParams();
+  const queryParams = Object.fromEntries(searchParams.entries());
   return (
     <Box
       sx={{
@@ -33,7 +36,7 @@ export default function HeaderChat() {
           >
             <Avatar
               alt="profile"
-              src="/assets/images/avatar.jpg"
+              src={queryParams?.image}
               sx={{
                 width: "80px",
                 height: "80px",
@@ -41,7 +44,7 @@ export default function HeaderChat() {
             />
             <Stack>
               <Typography variant="h6" color="white">
-                Dr. Ahmed Rashad
+                {queryParams?.name}
               </Typography>
               <Box
                 sx={{
@@ -52,7 +55,7 @@ export default function HeaderChat() {
                   width: "fit-content",
                 }}
               >
-                Prediction
+                {queryParams?.designation}
               </Box>
             </Stack>
           </Stack>

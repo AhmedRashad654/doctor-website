@@ -6,12 +6,12 @@ export default function AllMessages() {
   return (
     <Stack
       sx={{
-        height: "calc(100vh - 210px)",
+        height: "calc(100vh - 230px)",
         padding: "25px 5px",
         overflowY: "auto",
       }}
       direction={"column"}
-      spacing={1.5}
+      gap={"15px"}
     >
       {[1, 2, 3, 4, 5, 6, 7, 8, 63, 73, 82, 62].map((item) => (
         <Box

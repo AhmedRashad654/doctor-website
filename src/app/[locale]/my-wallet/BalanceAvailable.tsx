@@ -6,12 +6,17 @@ import balance from "../../../../public/assets/images/money.png";
 import ButtonAddMonyAndHistory from "./ButtonAddMonyAndHistory";
 import { transferAmount } from "@/services/functionShares";
 import { useTranslations } from "next-intl";
+import { getMoneyWallet } from "@/services/api/wallet/wallet";
+import { useQuery } from "@tanstack/react-query";
 import { useAppSelector } from "@/redux/hooks";
-import { RootState } from "@/redux/store";
 export default function BalanceAvailable() {
   const t = useTranslations("my-wallet");
-  const wallet = useAppSelector((state: RootState) => state.wallet);
-
+  const userId = useAppSelector((state) => state?.user?._id);
+  const { data } = useQuery({
+    queryKey: ["getMoneyWallet"],
+    queryFn: () => getMoneyWallet(),
+    enabled: !!userId,
+  });
   return (
     <Stack
       direction={"column"}
@@ -32,7 +37,7 @@ export default function BalanceAvailable() {
             {t("Available Balance")}
           </Typography>
           <Typography variant="h4" sx={{ color: "primary.main" }}>
-            {transferAmount(wallet.amount)}
+            {transferAmount(data?.amount ? data?.amount : 0)}
           </Typography>
         </Stack>
         <Image alt="available balance" src={balance} className="w-[80px]" />

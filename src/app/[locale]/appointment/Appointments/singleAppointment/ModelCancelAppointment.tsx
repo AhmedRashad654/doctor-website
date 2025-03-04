@@ -74,11 +74,13 @@ export default function ModelCancelAppointment({
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: "350px",
+          width: { md: "380px", xs: "350px" },
+          maxHeight: "95vh",
+          overflowY: "auto",
           bgcolor: "white",
           boxShadow: 24,
           borderRadius: "25px",
-          padding: "20px",
+          padding: "10px",
         }}
       >
         <CalendarMonthIcon sx={{ fontSize: "100px", color: "primary.main" }} />
@@ -99,7 +101,7 @@ export default function ModelCancelAppointment({
             rows={4}
             fullWidth
             value={reasonCancelAppointment || ""}
-            placeholder="Enter Cancelled Reason"
+            placeholder={t("Enter Cancelled Reason")}
             onChange={(e) => setReasonCancelAppointment(e.target.value)}
             sx={{ boxShadow: 1, width: "300px" }}
           />

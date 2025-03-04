@@ -1,5 +1,16 @@
 import { request } from "@/axios/axios";
 /*
+ * get appointments by status
+ */
+export async function getAppointmentByStatus(
+  userId: string,
+  valueSearch: string
+) {
+  return await request.get(
+    `/user/appointment/getUserAppointment?userId=${userId}&status=${valueSearch}`
+  );
+}
+/*
  * cancel appointment
  */
 export const cancelAppointment = async (

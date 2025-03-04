@@ -104,7 +104,8 @@
     }
   },
   "chat": {
-    "placeholder": "Type Something..."
+    "placeholder": "Type Something...",
+    "not enable call": "You do not have any appointment with the doctor"
   },
   "appointment": {
     "main": "appointment",
@@ -117,6 +118,7 @@
     "Do You Want": "Do You Want to Cancel this Appointment?",
     "terms": "if you want to confirm this appointment to be accept",
     "link terms": "Terms & Condition",
+    "Enter Cancelled Reason": "Enter Cancelled Reason",
     "Cancel": "Cancel"
   },
   "quizzes": {

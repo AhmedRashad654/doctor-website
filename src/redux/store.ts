@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./features/userSlice";
-import walletUserSlice from "./features/walletUserSlice";
 import savedDoctorSlice from "./features/savedDoctorsSlice";
 import stepsBookingSlice from "./features/stepsBookingSlice";
 
@@ -8,7 +7,6 @@ export const makeStore = () => {
   return configureStore({
     reducer: {
       user: userSlice,
-      wallet: walletUserSlice,
       savedDoctor: savedDoctorSlice,
       stepsBooking: stepsBookingSlice,
     },

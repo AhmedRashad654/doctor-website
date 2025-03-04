@@ -5,24 +5,18 @@ import notFound from "../../../../../public/assets/images/not-found.png";
 import LoadingSkeleton from "@/components/Shared/LoadingSkeleton";
 import NotFoundData from "@/components/Shared/NotFoundData";
 import SingleAppointment from "./singleAppointment/SingleAppointment";
-import { request } from "@/axios/axios";
 import { useQuery } from "@tanstack/react-query";
 import { IAppointment } from "@/constants/Types";
 import { useAppSelector } from "@/redux/hooks";
+import { getAppointmentByStatus } from "@/services/api/appointment";
 
 export default function Appointments({ valueSearch }: { valueSearch: string }) {
   const userId = useAppSelector((state) => state?.user?._id);
-  async function getAppointmentByStatus() {
-    return await request.get(
-      `/user/appointment/getUserAppointment?userId=${userId}&status=${valueSearch}`
-    );
-  }
   const { data, isLoading } = useQuery({
-    queryKey: ["getAppointmentByStatus", valueSearch, userId],
-    queryFn: () => getAppointmentByStatus(),
+    queryKey: ["getAppointmentByStatus", userId, valueSearch],
+    queryFn: () => getAppointmentByStatus(userId, valueSearch),
     enabled: !!userId,
   });
-
   if (isLoading)
     return <LoadingSkeleton height={70} width={"100%"} text="column" />;
 

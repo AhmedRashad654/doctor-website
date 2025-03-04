@@ -54,6 +54,18 @@ body {
   border-top-right-radius: 35px;
   border-bottom-right-radius: 35px;
 }
-.l{
-  color: #c43838;
+/* // setting scroll bar  */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #3b436f; 
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0056b3;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }

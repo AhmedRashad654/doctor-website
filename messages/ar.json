@@ -104,7 +104,8 @@
     }
   },
   "chat": {
-    "placeholder": "اكتب اي شئ..."
+    "placeholder": "اكتب اي شئ...",
+    "not enable call": "ليس لديك اي معاد مع الدكتور"
   },
   "appointment": {
     "main": "المواعيد",
@@ -117,6 +118,7 @@
     "Do You Want": "هل تريد الغاء هذا الموعد",
     "terms": " اذا كنت تريد تاكيد هذا الموعد عليك قبول",
     "link terms": "  الشروط والاحكام   ",
+    "Enter Cancelled Reason": "ادخل سبب الالغاء",
     "Cancel": "الغاء"
   },
   "quizzes": {

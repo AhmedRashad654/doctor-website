@@ -1,5 +1,4 @@
 "use client";
-import { AppDispatch } from "@/redux/store";
 import { handleSubmitWallet } from "@/services/api/wallet/wallet";
 import { Button, TextField, Typography } from "@mui/material";
 import {
@@ -10,15 +9,16 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useContextState } from "../../../../context/ContextUseState";
+import { useQueryClient } from "@tanstack/react-query";
 export default function FormChargeWallet() {
   const stripe = useStripe();
   const elements = useElements();
   const [amount, setAmount] = useState<number>(0);
-  const {setOpen} = useContextState()
-  const dispatch = useDispatch<AppDispatch>();
+  const { setOpen } = useContextState();
   const [loading, setLoading] = useState<boolean>(false);
+  // react query
+  const queryClient = useQueryClient();
   return (
     <form
       onSubmit={(e) =>
@@ -30,7 +30,7 @@ export default function FormChargeWallet() {
           amount,
           setOpen,
           setLoading,
-          dispatch
+          queryClient
         )
       }
       className="bg-white flex gap-3 flex-col shadow-lg rounded-lg p-6 md:w-[450px] w-[340px] mx-auto"
