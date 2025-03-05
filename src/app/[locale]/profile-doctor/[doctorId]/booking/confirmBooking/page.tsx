@@ -15,7 +15,7 @@ export default function ConfirmBookingPage() {
   const bookingState = useAppSelector((state) => state?.stepsBooking);
   const router = useRouter();
   useEffect(() => {
-    if (!bookingState?.explainYourProblem) {
+    if (bookingState?.explainYourProblem === null) {
       router.push(`/profile-doctor/${doctorId}`);
     }
   }, [bookingState?.explainYourProblem, doctorId, router]);
@@ -29,6 +29,7 @@ export default function ConfirmBookingPage() {
           name={bookingState?.doctor?.name}
           degree={bookingState?.doctor?.degree}
           address={bookingState?.doctor?.address}
+          designation={bookingState?.doctor?.designation}
         />
         <AppointmentShedule />
         <PaymentAppointment />

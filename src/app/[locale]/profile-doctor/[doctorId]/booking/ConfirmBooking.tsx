@@ -15,10 +15,10 @@ export default function ConfirmBooking() {
   // handle confirm booking
   async function handleConfirmBooking() {
     if (!selectedDateBooking) return showText("select Date is required");
-    if (!bookingState?.selectedTime) return showText("select Time is required");
-    if (!bookingState?.selectAppointmentType)
+    if (bookingState?.selectedTime===null) return showText("select Time is required");
+    if (bookingState?.selectAppointmentType === null)
       return showText("select appointment Type is Required");
-    if (!bookingState?.explainYourProblem)
+    if (bookingState?.explainYourProblem === null)
       return showText("explain your problem is Required");
     router.push(
       `/profile-doctor/${bookingState?.doctor?._id}/booking/confirmBooking`

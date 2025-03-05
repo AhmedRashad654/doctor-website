@@ -36,18 +36,22 @@ export const bookAppointment = async (
   selectedDateBooking: Dayjs | null,
   bookingState: IStepsBooking
 ) => {
-  const response = await request.post(`/user/appointment/newAppointment`, {
-    serviceId: bookingState?.doctor?.service[0]?._id,
-    userId: userId,
-    doctorId: bookingState?.doctor?._id,
-    date: selectedDateBooking,
-    time: bookingState?.selectedTime,
-    amount: bookingState?.tax?.data?.finalAmount,
-    withoutTax: bookingState?.doctor?.charge,
-    type: bookingState?.selectAppointmentType,
-    patient: "self",
-    details: bookingState?.explainYourProblem,
-  });
-  if (response?.status === 200) return response?.data;
-  alert("Faild Book Appointment");
+  try {
+    const response = await request.post(`/user/appointment/newAppointment`, {
+      serviceId: bookingState?.doctor?.service[0]?._id,
+      userId: userId,
+      doctorId: bookingState?.doctor?._id,
+      date: selectedDateBooking,
+      time: bookingState?.selectedTime,
+      amount: bookingState?.tax?.data?.finalAmount,
+      withoutTax: bookingState?.doctor?.charge,
+      type: bookingState?.selectAppointmentType,
+      patient: "self",
+      details: bookingState?.explainYourProblem,
+    });
+
+    if (response?.status === 200) return response?.data;
+  } catch{
+    alert("Faild Book Appointment, please try again");
+  }
 };

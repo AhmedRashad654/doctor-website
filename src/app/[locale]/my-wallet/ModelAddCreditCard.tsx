@@ -7,10 +7,13 @@ import { useCallback } from "react";
 import { useContextState } from "../../../../context/ContextUseState";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_PK_STRIPE || "");
 export default function ModelAddCreditCard() {
-  const {open,setOpen} = useContextState()
-  const handleClose = useCallback(() => setOpen(false), [setOpen]);
+  const { openFormChargeWallet, setOpenFormChargeWallet } = useContextState();
+  const handleClose = useCallback(
+    () => setOpenFormChargeWallet(false),
+    [setOpenFormChargeWallet]
+  );
   return (
-    <Modal open={open} onClose={handleClose} disableEnforceFocus>
+    <Modal open={openFormChargeWallet} onClose={handleClose} disableEnforceFocus>
       <Stack
         alignItems={"center"}
         justifyContent={"center"}
@@ -19,7 +22,7 @@ export default function ModelAddCreditCard() {
       >
         <div onClick={(e) => e.stopPropagation()}>
           <Elements stripe={stripePromise}>
-            <FormChargeWallet  />
+            <FormChargeWallet />
           </Elements>
         </div>
       </Stack>

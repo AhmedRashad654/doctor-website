@@ -29,6 +29,7 @@ import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/routing";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setLogout } from "@/redux/features/userSlice";
+import { setInitialState } from "@/redux/features/stepsBookingSlice";
 
 export default function Sidebar() {
   const t = useTranslations("sidebar");
@@ -37,6 +38,7 @@ export default function Sidebar() {
   const router = useRouter();
   const handleLogout = () => {
     dispatch(setLogout());
+    dispatch(setInitialState());
     router.push("/login");
   };
   return (

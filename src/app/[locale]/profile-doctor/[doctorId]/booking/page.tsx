@@ -35,6 +35,7 @@ export default function Booking() {
           name={profileDoctor?.name}
           degree={profileDoctor.degree}
           address={profileDoctor.address}
+          designation={profileDoctor?.designation}
         />
         <Typography variant="h5" color="primary.main" marginTop={"15px"}>
           {t("Select Date")}

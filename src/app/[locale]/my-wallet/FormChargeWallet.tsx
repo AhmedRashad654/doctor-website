@@ -15,7 +15,7 @@ export default function FormChargeWallet() {
   const stripe = useStripe();
   const elements = useElements();
   const [amount, setAmount] = useState<number>(0);
-  const { setOpen } = useContextState();
+  const { setOpenFormChargeWallet } = useContextState();
   const [loading, setLoading] = useState<boolean>(false);
   // react query
   const queryClient = useQueryClient();
@@ -28,7 +28,7 @@ export default function FormChargeWallet() {
           elements,
           CardNumberElement,
           amount,
-          setOpen,
+          setOpenFormChargeWallet,
           setLoading,
           queryClient
         )

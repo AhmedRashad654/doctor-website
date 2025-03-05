@@ -10,8 +10,8 @@ import {
 } from "react";
 
 interface ContextType {
-  open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
+  openFormChargeWallet: boolean;
+  setOpenFormChargeWallet: Dispatch<SetStateAction<boolean>>;
   selectedDate: Dayjs;
   setSelectedDate: Dispatch<SetStateAction<Dayjs>>;
   selectedDateBooking: Dayjs | null;
@@ -21,7 +21,8 @@ interface ContextType {
 }
 const ContextUseState = createContext<ContextType | undefined>(undefined);
 function ContextProvider({ children }: { children: ReactNode }) {
-  const [open, setOpen] = useState<boolean>(false);
+  const [openFormChargeWallet, setOpenFormChargeWallet] =
+    useState<boolean>(false);
 
   const today = dayjs();
   const [selectedDateBooking, setSelectedDateBooking] = useState<Dayjs | null>(
@@ -36,8 +37,8 @@ function ContextProvider({ children }: { children: ReactNode }) {
   return (
     <ContextUseState.Provider
       value={{
-        open,
-        setOpen,
+        openFormChargeWallet,
+        setOpenFormChargeWallet,
         selectedDate,
         setSelectedDate,
         selectedDateBooking,

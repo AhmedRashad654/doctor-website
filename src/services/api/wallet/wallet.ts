@@ -38,7 +38,7 @@ export const handleSubmitWallet = async (
   elements: StripeElements | null,
   CardNumberElement: CardNumberElementComponent,
   amount: number,
-  setOpen: Dispatch<SetStateAction<boolean>>,
+  setOpenFormChargeWallet: Dispatch<SetStateAction<boolean>>,
   setLoading: Dispatch<SetStateAction<boolean>>,
   queryClient: QueryClient
 ) => {
@@ -67,7 +67,7 @@ export const handleSubmitWallet = async (
       const response = await addMoneyInWallet(amount);
       if (response) {
         alert("Payment success");
-        setOpen(false);
+        setOpenFormChargeWallet(false);
         queryClient.invalidateQueries({ queryKey: ["getMoneyWallet"] });
       } else {
         alert("Payment failed");
