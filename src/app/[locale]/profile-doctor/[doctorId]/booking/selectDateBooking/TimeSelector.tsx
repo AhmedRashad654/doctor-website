@@ -37,7 +37,6 @@ export default function TimeSelector() {
     (state) => state?.stepsBooking?.availableTime?.busySlots
   );
   const stepsBooking = useAppSelector((state) => state.stepsBooking);
-
   const dispatch = useAppDispatch();
   return (
     <>
@@ -97,7 +96,9 @@ export default function TimeSelector() {
                           border: isBusy ? "1px solid red" : "",
                         }}
                         onClick={() => {
-                          dispatch(setSelectedTime(time));
+                          if (!isBusy) {
+                            dispatch(setSelectedTime(time));
+                          }
                         }}
                       >
                         {time}

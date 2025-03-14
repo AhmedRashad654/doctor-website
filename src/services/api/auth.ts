@@ -13,18 +13,16 @@ import { FormDataEditProfile } from "@/constants/Types";
 export const loginWithGoogle = async (
   creaditialResponse: CredentialResponse,
   dispatch: Dispatch,
-  router: AppRouterInstance,
-  fcmToken: string | null
+  router: AppRouterInstance
+  // fcmToken: string | null
 ) => {
   if (creaditialResponse.credential) {
     const decode: { email: string } = jwtDecode(creaditialResponse.credential);
-
     const result = await request.post("/user/loginSignup", {
       loginType: 2,
-      fcmToken: fcmToken,
+      fcmToken: "fcmToken",
       email: decode.email,
     });
-
     if (result?.data?.user) {
       Cookies.set("userId_Doctor", result.data.user._id, { expires: 7 });
       dispatch(setUser(result?.data?.user));

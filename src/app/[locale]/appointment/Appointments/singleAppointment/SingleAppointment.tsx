@@ -13,6 +13,7 @@ import ModelCancelAppointment from "./ModelCancelAppointment";
 export default function SingleAppointment({ item }: { item: IAppointment }) {
   const [openCancelAppointment, setOpenCancelAppointment] =
     useState<boolean>(false);
+
   return (
     <Stack
       gap="15px"

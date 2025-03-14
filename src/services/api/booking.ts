@@ -1,6 +1,6 @@
 import { request } from "@/axios/axios";
 import { IStepsBooking } from "@/constants/Types";
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import Cookies from "js-cookie";
 /*
  * check slot available
@@ -36,12 +36,14 @@ export const bookAppointment = async (
   selectedDateBooking: Dayjs | null,
   bookingState: IStepsBooking
 ) => {
+  const date = dayjs(selectedDateBooking);
+  const formattedDate = date.format("YYYY-MM-DD");
   try {
     const response = await request.post(`/user/appointment/newAppointment`, {
       serviceId: bookingState?.doctor?.service[0]?._id,
       userId: userId,
       doctorId: bookingState?.doctor?._id,
-      date: selectedDateBooking,
+      date: formattedDate,
       time: bookingState?.selectedTime,
       amount: bookingState?.tax?.data?.finalAmount,
       withoutTax: bookingState?.doctor?.charge,
@@ -51,7 +53,7 @@ export const bookAppointment = async (
     });
 
     if (response?.status === 200) return response?.data;
-  } catch{
+  } catch {
     alert("Faild Book Appointment, please try again");
   }
 };

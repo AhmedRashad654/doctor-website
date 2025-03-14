@@ -6,6 +6,9 @@ import { cookies } from "next/headers";
  * get services
  */
 export const getServices = async () => {
+  const cookieStore = await cookies();
+  const userId = cookieStore.get("userId_Doctor")?.value;
+  if (!userId) return;
   const request = await fetch(`${url}/user/service`, {
     method: "GET",
     headers: {

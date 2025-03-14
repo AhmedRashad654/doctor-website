@@ -21,7 +21,7 @@ export default async function Services() {
         paddingY={"50px"}
         flexWrap={"wrap"}
       >
-        {services.map((service: IServices) => (
+        {services?.map((service: IServices) => (
           <BlockServices service={service} key={service._id} />
         ))}
       </Stack>

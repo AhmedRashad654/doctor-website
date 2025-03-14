@@ -8,14 +8,14 @@ import { useContextState } from "../../../../context/ContextUseState";
 
 export default function ButtonAddMonyAndHistory() {
   const t = useTranslations("my-wallet");
-  const {open,setOpen} = useContextState()
+  const { openFormChargeWallet, setOpenFormChargeWallet } = useContextState();
   const router = useRouter()
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   useEffect(() => {
     if (!open && triggerRef.current) {
       triggerRef.current.focus();
     }
-  }, [open]);
+  }, [openFormChargeWallet]);
   return (
     <>
       <Stack
@@ -36,7 +36,7 @@ export default function ButtonAddMonyAndHistory() {
             fontWeight: "semibold",
             textTransform: "none",
           }}
-          onClick={() => setOpen(true)}
+          onClick={() => setOpenFormChargeWallet(true)}
         >
           {t("Add Money")}
         </Button>
@@ -51,12 +51,12 @@ export default function ButtonAddMonyAndHistory() {
             fontWeight: "semibold",
             textTransform: "none",
           }}
-          onClick={()=>router.push("/my-wallet/history")}
+          onClick={() => router.push("/my-wallet/history")}
         >
           {t("History")}
         </Button>
       </Stack>
-      <ModelAddCreditCard  />
+      <ModelAddCreditCard />
     </>
   );
 }

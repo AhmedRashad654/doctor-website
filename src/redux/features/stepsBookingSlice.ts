@@ -6,7 +6,7 @@ import {
   IStepsBooking,
 } from "@/constants/Types";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 
 const emptyDoctor: Doctor = {
   _id: "",
@@ -100,9 +100,11 @@ export const fetchTimeAvailbleDoctor = createAsyncThunk(
     },
     thunkAPI
   ) => {
+    const date = dayjs(selectedDateBooking);
+    const formattedDate = date.format("YYYY-MM-DD");
     try {
       const response = await request.get(
-        `/user/appointment/checkDate?doctorId=${doctorId}&date=${selectedDateBooking}`
+        `/user/appointment/checkDate?doctorId=${doctorId}&date=${formattedDate}`
       );
       return response.data;
     } catch {

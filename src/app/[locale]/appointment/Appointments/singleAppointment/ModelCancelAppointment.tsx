@@ -59,7 +59,7 @@ export default function ModelCancelAppointment({
         : valueSearchParams === "cancalled"
         ? "4"
         : "3";
-    const queryKey = ["getAppointmentByStatus", statusKey, userId];
+    const queryKey = ["getAppointmentByStatus", userId, statusKey];
     queryClient.invalidateQueries({ queryKey });
     handleClose();
   }
