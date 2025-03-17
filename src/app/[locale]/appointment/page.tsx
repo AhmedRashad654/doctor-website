@@ -6,10 +6,10 @@ import Appointments from "./Appointments/Appointments";
 export default async function Appointment({
   searchParams,
 }: {
-  searchParams: { [key: string]: string };
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const search = await searchParams;
-  const valueSearch = search?.category || "/";
+  const resolvedSearchParams = await searchParams;
+  const valueSearch = resolvedSearchParams?.category || "/";
 
   return (
     <Container sx={{ paddingY: "30px" }}>

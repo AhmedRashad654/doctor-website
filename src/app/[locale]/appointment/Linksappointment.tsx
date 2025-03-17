@@ -7,7 +7,7 @@ import React from "react";
 export default function Linksappointment({
   valueSearch,
 }: {
-  valueSearch: string;
+  valueSearch: string | string[] | undefined;
 }) {
   const t = useTranslations("appointment");
   const links = [

@@ -14,7 +14,6 @@ export const loginWithGoogle = async (
   creaditialResponse: CredentialResponse,
   dispatch: Dispatch,
   router: AppRouterInstance
-  // fcmToken: string | null
 ) => {
   if (creaditialResponse.credential) {
     const decode: { email: string } = jwtDecode(creaditialResponse.credential);

@@ -8,8 +8,8 @@ export default async function Doctors({
   params,
   searchParams,
 }: {
-  params: { [key: string]: string };
-  searchParams: { [key: string]: string };
+  params: Promise<Record<string, string>>;
+  searchParams: Promise<Record<string, string>>;
 }) {
   const serviceName = await params;
   const valueServiceName = serviceName?.category || "/";

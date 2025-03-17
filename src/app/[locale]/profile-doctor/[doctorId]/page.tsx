@@ -16,10 +16,8 @@ export default async function DetailsDoctor({
   searchParams,
   params,
 }: {
-  searchParams: { [key: string]: string };
-  params: {
-    doctorId: string;
-  };
+  searchParams: Promise<Record<string, string>>;
+  params: Promise<Record<string, string>>;
 }) {
   const search = await searchParams;
   const { doctorId } = await params;

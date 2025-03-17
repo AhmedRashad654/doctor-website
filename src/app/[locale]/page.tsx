@@ -5,7 +5,7 @@ import Services from "@/components/HomePage/services";
 export default async function HomePage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string };
+  searchParams: Promise<Record<string, string>>;
 }) {
   const search = await searchParams;
   const valueSearch = search?.tab || "/";

@@ -12,12 +12,10 @@ import { UserState } from "@/constants/Types";
 import { loginWithGoogle } from "@/services/api/auth";
 import { useEffect } from "react";
 import { useRouter } from "@/i18n/routing";
-import { useContextFirebase } from "../../../../../context/ContextFirebase";
 
 export default function Login() {
   const t = useTranslations("Login");
   const dispatch = useDispatch();
-  const { fcmToken } = useContextFirebase();
   const user = useSelector((state: { user: UserState }) => state?.user);
   const router = useRouter();
   useEffect(() => {
@@ -102,7 +100,7 @@ export default function Login() {
         <Box sx={{ marginTop: "10px", width: "100%" }}>
           <GoogleLogin
             onSuccess={(response) =>
-              loginWithGoogle(response, dispatch, router, fcmToken)
+              loginWithGoogle(response, dispatch, router)
             }
             onError={() => console.log("Faild login")}
           />

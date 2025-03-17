@@ -15,7 +15,6 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import StoreProvider from "./StoreProvider";
 import ClientLayout from "./ClientLayout";
 import ReactQueryProvider from "./ReactQueryProvider";
-import { ContextProviderFirebase } from "../../../context/ContextFirebase";
 
 export const metadata = {
   title: "clears mind",
@@ -46,7 +45,7 @@ export default async function LocaleLayout({
             <ClientLayout>
               <AppRouterCacheProvider>
                 <GoogleOAuthProvider clientId={CLIENT_ID}>
-                  <ContextProviderFirebase>
+             
                     <ContextProvider>
                       <ThemeProvider theme={theme}>
                         <NavbarVisibility>
@@ -58,7 +57,7 @@ export default async function LocaleLayout({
                         </FooterVisibility>
                       </ThemeProvider>
                     </ContextProvider>
-                  </ContextProviderFirebase>
+               
                 </GoogleOAuthProvider>
               </AppRouterCacheProvider>
             </ClientLayout>
